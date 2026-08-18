@@ -1,6 +1,6 @@
-# CHATFLOP
+# CHAT GAIN
 
-A responsive React/Vite replica of the Chatflop landing page, with live payout animation, chat profiles, registration CTAs, FAQ accordion, theme toggle, and mobile layout.
+A responsive React/Vite replica of the CHAT GAIN landing page, with live payout animation, chat profiles, registration CTAs, FAQ accordion, theme toggle, and mobile layout.
 
 ## Run & Operate
 
@@ -24,7 +24,7 @@ A responsive React/Vite replica of the Chatflop landing page, with live payout a
 ## Where things live
 
 - `artifacts/chat-gain/src/App.tsx` — page sections, CTA behavior, profile modal, FAQ state, and theme/language controls
-- `artifacts/chat-gain/src/index.css` — Chatflop visual system, responsive layout, payout animation, and reveal animation
+- `artifacts/chat-gain/src/index.css` — CHAT GAIN visual system, responsive layout, payout animation, and reveal animation
 - `artifacts/chat-gain/index.html` — document metadata
 - `artifacts/api-server` — separate Express API service
 
@@ -37,7 +37,7 @@ A responsive React/Vite replica of the Chatflop landing page, with live payout a
 
 ## Product
 
-The page presents a Chatflop-style marketplace for paid conversations: visitors can browse active profiles, open a chat preview, navigate to the guide/join sections, submit an earning-tips email, expand FAQs, toggle dark mode, and switch the visible language control.
+The page presents a CHAT GAIN-style marketplace for paid conversations: visitors can browse active profiles, open a chat preview, navigate to the guide/join sections, submit an earning-tips email, expand FAQs, toggle dark mode, and switch the visible language control.
 
 ## User preferences
 

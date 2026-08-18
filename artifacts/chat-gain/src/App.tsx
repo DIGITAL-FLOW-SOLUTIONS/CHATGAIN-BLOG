@@ -26,11 +26,11 @@ const people: Person[] = [
 const payouts = ['LINDA W. $25 (just now)', 'NAOMI S. $72 (30s ago)', 'NAOMI S. $105 (just now)', 'CYNTHIA R. $72 (just now)', 'SARAH M. $55 (30s ago)', 'LINDA W. $210 (5m ago)', 'SARAH M. $110 (just now)'];
 
 const faqs = [
-  ['WHAT IS CHATFLOP?', 'CHAT GAIN helps you earn by chatting with foreigners. Choose the conversations you enjoy, spend time with people around the world, and get paid for your approved chat time.'],
+  ['WHAT IS CHAT GAIN?', 'CHAT GAIN helps you earn by chatting with foreigners. Choose the conversations you enjoy, spend time with people around the world, and get paid for your approved chat time.'],
   ['HOW DO I EARN MONEY?', 'Browse the live room, choose a shared interest, and tap Start paid chat. You can meet people from other countries while earning from the time you spend talking.'],
   ['IS THERE A REGISTRATION FEE?', 'No. Creating your profile and joining is free. Once you are approved, you can earn when foreigners book and complete chats with you.'],
   ['HOW DO I GET PAID?', 'Payouts are processed through mobile money and other verified gateways. You can track the time you spend and your earnings inside the platform.'],
-  ['IS CHATFLOP LEGITIMATE?', 'You stay in control at every step. Use our report tools, protect your personal information, and leave any conversation that does not feel right.'],
+  ['IS CHAT GAIN LEGITIMATE?', 'You stay in control at every step. Use our report tools, protect your personal information, and leave any conversation that does not feel right.'],
   ['WHEN CAN I WITHDRAW MY EARNINGS?', 'Create your profile, choose your languages and topics, set when you are available, and start accepting paid chats with foreigners who want to connect.'],
 ];
 
@@ -59,7 +59,7 @@ function Header({ dark, onTheme, swahili, onLanguage }: { dark: boolean; onTheme
   return <header>
     <nav className="reference-nav">
       <div className="reference-nav-inner">
-        <button className="reference-brand" type="button" onClick={() => scrollToId('top')} data-testid="button-brand"><span className="reference-mark">c</span><strong>CHATFLOP</strong></button>
+        <button className="reference-brand" type="button" onClick={() => scrollToId('top')} data-testid="button-brand"><span className="reference-mark">c</span><strong>CHAT GAIN</strong></button>
         <div className="reference-links">
           <a href="#top">HOME</a><a href="#voices">EARNINGS</a><a href="#how-it-works">GUIDE</a>
         </div>
@@ -153,7 +153,7 @@ function FAQ() {
 }
 
 function Footer() {
-  return <footer className="reference-footer"><div className="reference-container footer-layout"><div className="footer-brand"><button className="reference-brand" type="button" onClick={() => scrollToId('top')}><span className="reference-mark">c</span><strong>CHATFLOP</strong></button><p>Good conversations can make<br />the world feel bigger—and put extra income in your pocket.</p><span>● GLOBAL HOSTING INFRASTRUCTURE</span></div><div className="footer-cta"><span>GLOBAL HOSTING INFRASTRUCTURE</span><h2>There is always<br /><em>a paid chat</em><br />to start.</h2><RegisterButton /></div></div><div className="reference-container footer-bottom"><span>© 2026 CHATFLOP</span><div><a href="#faq">PRIVACY</a><a href="#faq">TERMS</a><a href="#top">BACK TO TOP</a></div></div></footer>;
+  return <footer className="reference-footer"><div className="reference-container footer-layout"><div className="footer-brand"><button className="reference-brand" type="button" onClick={() => scrollToId('top')}><span className="reference-mark">c</span><strong>CHAT GAIN</strong></button><p>Good conversations can make<br />the world feel bigger—and put extra income in your pocket.</p><span>● GLOBAL HOSTING INFRASTRUCTURE</span></div><div className="footer-cta"><span>GLOBAL HOSTING INFRASTRUCTURE</span><h2>There is always<br /><em>a paid chat</em><br />to start.</h2><RegisterButton /></div></div><div className="reference-container footer-bottom"><span>© 2026 CHAT GAIN</span><div><a href="#faq">PRIVACY</a><a href="#faq">TERMS</a><a href="#top">BACK TO TOP</a></div></div></footer>;
 }
 
 function App() {
