@@ -1,15 +1,16 @@
-# [Project name]
+# CHATFLOP
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A responsive React/Vite replica of the Chatflop landing page, with live payout animation, chat profiles, registration CTAs, FAQ accordion, theme toggle, and mobile layout.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/chat-gain run dev` — run the web app
+- `pnpm --filter @workspace/api-server run dev` — run the API server
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- Required env for the API server: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
@@ -22,23 +23,30 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/chat-gain/src/App.tsx` — page sections, CTA behavior, profile modal, FAQ state, and theme/language controls
+- `artifacts/chat-gain/src/index.css` — Chatflop visual system, responsive layout, payout animation, and reveal animation
+- `artifacts/chat-gain/index.html` — document metadata
+- `artifacts/api-server` — separate Express API service
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The existing pnpm workspace and React/Vite stack are retained; the replica is implemented within the existing `chat-gain` artifact.
+- The payout strip is placed below the top navigation to match the reference site.
+- Profile photos use public Unsplash image URLs because the imported project does not contain the source profile assets.
+- CTA buttons use in-page anchors and a profile modal so the visual replica remains functional without inventing a backend registration flow.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+The page presents a Chatflop-style marketplace for paid conversations: visitors can browse active profiles, open a chat preview, navigate to the guide/join sections, submit an earning-tips email, expand FAQs, toggle dark mode, and switch the visible language control.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Preserve the existing main heading and paragraph copy when adjusting the replica.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- The web preview does not require the API server; the API workflow still requires `DATABASE_URL`.
+- Profile images are remote and require network access in the preview.
 
 ## Pointers
 
