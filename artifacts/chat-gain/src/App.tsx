@@ -10,6 +10,16 @@ type Person = {
   photo: string;
 };
 
+type InvestmentPlan = {
+  id: number;
+  name: string;
+  image: string;
+  deposit: string;
+  dailyProfit: string;
+  totalDays: string;
+  totalProfit: string;
+};
+
 const people: Person[] = [
   { id: 1, name: 'Margaret W.', age: 58, country: 'USA', flag: '🇺🇸', photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=180&q=85' },
   { id: 2, name: 'Robert H.', age: 62, country: 'UK', flag: '🇬🇧', photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=180&q=85' },
@@ -24,6 +34,14 @@ const people: Person[] = [
 ];
 
 const payouts = ['LINDA W. $25 (just now)', 'NAOMI S. $72 (30s ago)', 'NAOMI S. $105 (just now)', 'CYNTHIA R. $72 (just now)', 'SARAH M. $55 (30s ago)', 'LINDA W. $210 (5m ago)', 'SARAH M. $110 (just now)'];
+
+const investmentPlans: InvestmentPlan[] = [
+  { id: 1, name: 'DUROMAX GENERATOR', image: '/investments/generator1.jpeg', deposit: 'UGX 40,000', dailyProfit: 'UGX 12,000', totalDays: '30', totalProfit: 'UGX 360,000' },
+  { id: 2, name: 'HONDA INVERTER', image: '/investments/generator2.jpeg', deposit: 'UGX 55,000', dailyProfit: 'UGX 20,000', totalDays: '30', totalProfit: 'UGX 600,000' },
+  { id: 3, name: 'NINJABATT POWER STATION', image: '/investments/generator3.jpeg', deposit: 'UGX 80,000', dailyProfit: 'UGX 30,000', totalDays: '60', totalProfit: 'UGX 1,800,000' },
+  { id: 4, name: 'DEWALT COMPRESSOR', image: '/investments/generator4.jpeg', deposit: 'UGX 150,000', dailyProfit: 'UGX 45,000', totalDays: '60', totalProfit: 'UGX 2,700,000' },
+  { id: 5, name: 'POWER GENERATOR', image: '/investments/generator1.jpeg', deposit: 'UGX 250,000', dailyProfit: 'UGX 55,000', totalDays: '120', totalProfit: 'UGX 6,600,000' },
+];
 
 const faqs = [
   ['WHAT IS CHAT GAIN?', 'CHAT GAIN helps you earn by chatting with foreigners. Choose the conversations you enjoy, spend time with people around the world, and get paid for your approved chat time.'],
@@ -61,7 +79,7 @@ function Header({ dark, onTheme, swahili, onLanguage }: { dark: boolean; onTheme
       <div className="reference-nav-inner">
         <button className="reference-brand" type="button" onClick={() => scrollToId('top')} data-testid="button-brand"><span className="reference-mark">c</span><strong>CHAT GAIN</strong></button>
         <div className="reference-links">
-          <a href="#top">HOME</a><a href="#voices">EARNINGS</a><a href="#how-it-works">GUIDE</a>
+          <a href="#top">HOME</a><a href="#voices">EARNINGS</a><a href="#investments">INVESTMENTS</a><a href="#how-it-works">GUIDE</a>
         </div>
         <div className="reference-actions">
           <button className="language-button" type="button" onClick={onLanguage} data-testid="button-language">{swahili ? 'EN' : 'SW'}</button>
@@ -119,6 +137,30 @@ function Voices() {
   </div>{selected && <ProfileModal person={selected} onClose={() => setSelected(null)} />}</section>;
 }
 
+function InvestmentCard({ plan }: { plan: InvestmentPlan }) {
+  return <article className="investment-card reveal">
+    <div className="investment-image-wrap"><img src={plan.image} alt={plan.name} /></div>
+    <div className="investment-card-content">
+      <div className="investment-card-heading"><div><span className="investment-kicker">CHAT GAIN PLAN {String(plan.id).padStart(2, '0')}</span><h3>{plan.name}</h3></div><span className="investment-status"><i /> OPEN NOW</span></div>
+      <div className="investment-details">
+        <div><span>DEPOSIT</span><strong>{plan.deposit}</strong></div>
+        <div><span>DAILY PROFIT</span><strong className="profit-value">{plan.dailyProfit}</strong></div>
+        <div><span>TOTAL DAYS</span><strong>{plan.totalDays}</strong></div>
+        <div><span>TOTAL PROFIT</span><strong className="profit-value">{plan.totalProfit}</strong></div>
+      </div>
+      <button className="investment-action" type="button" onClick={() => scrollToId('join')} data-testid={`button-invest-${plan.id}`}>INVEST NOW <ArrowRight size={14} /></button>
+    </div>
+  </article>;
+}
+
+function Investments() {
+  return <section className="investments-reference" id="investments"><div className="reference-container">
+    <div className="investment-heading reveal"><div><span className="section-label">POWER YOUR NEXT MOVE</span><h2>INVESTMENT <span>PLANS</span></h2><p>Choose a plan, grow your balance, and make your time online work harder for you.</p></div><span className="investment-note">UGX PLANS · CLEAR RETURNS</span></div>
+    <div className="investment-grid">{investmentPlans.map((plan) => <InvestmentCard key={plan.id} plan={plan} />)}</div>
+    <div className="investment-actions reveal"><button className="investment-secondary" type="button" onClick={() => scrollToId('voices')} data-testid="button-invest-chat">CHAT NOW</button><button className="reference-button investment-primary" type="button" onClick={() => scrollToId('join')} data-testid="button-invest-now">INVEST NOW <ArrowRight size={14} /></button><RegisterButton className="investment-register" /><button className="investment-secondary investment-join" type="button" onClick={() => scrollToId('join')} data-testid="button-invest-join">JOIN NOW</button></div>
+  </div></section>;
+}
+
 function SupportCard() {
   return <article className="support-card reveal"><span>CHAT SUPPORT</span><h3>JOIN TRAINING CHANNEL</h3><p>Get training, updates &amp; connect with other earners.</p><button type="button" onClick={() => scrollToId('join')} data-testid="button-support">OPEN SUPPORT CHAT</button></article>;
 }
@@ -161,7 +203,7 @@ function App() {
   const [swahili, setSwahili] = useState(false);
   useReveal();
   useEffect(() => { document.documentElement.classList.toggle('dark', dark); }, [dark]);
-  return <div className="site-reference"><Header dark={dark} onTheme={() => setDark((value) => !value)} swahili={swahili} onLanguage={() => setSwahili((value) => !value)} /><main><Hero /><Voices /><Metrics /><HowItWorks /><Join /><Stories /><FAQ /></main><Footer /></div>;
+  return <div className="site-reference"><Header dark={dark} onTheme={() => setDark((value) => !value)} swahili={swahili} onLanguage={() => setSwahili((value) => !value)} /><main><Hero /><Voices /><Investments /><Metrics /><HowItWorks /><Join /><Stories /><FAQ /></main><Footer /></div>;
 }
 
 export default App;
