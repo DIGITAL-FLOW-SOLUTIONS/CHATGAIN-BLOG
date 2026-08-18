@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "CHAT GAIN"
+description = "An editorial blog for discovering sharp ideas, practical playbooks, and thoughtful perspectives on conversation-led growth."
+version = "1.0.0"
+id = "artifacts/chat-gain"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18621
+
+[services.development]
+run = "pnpm --filter @workspace/chat-gain run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/chat-gain", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/chat-gain/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18621"
+BASE_PATH = "/"
