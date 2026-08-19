@@ -227,7 +227,7 @@ function FAQ() {
 }
 
 function Footer() {
-  return <footer className="reference-footer"><div className="reference-container footer-layout"><div className="footer-brand"><button className="reference-brand" type="button" onClick={() => scrollToId('top')}><span className="reference-mark">c</span><strong>CHAT GAIN</strong></button><p>Good conversations can make<br />the world feel bigger—and put extra income in your pocket.</p><span>● GLOBAL HOSTING INFRASTRUCTURE</span></div><div className="footer-cta"><span>GLOBAL HOSTING INFRASTRUCTURE</span><h2>There is always<br /><em>a paid chat</em><br />to start.</h2><RegisterButton /></div></div><div className="reference-container footer-bottom"><span>© 2026 CHAT GAIN</span><div><a href="#faq">PRIVACY</a><a href="#faq">TERMS</a><a href="#top">BACK TO TOP</a></div></div></footer>;
+  return <footer className="reference-footer"><div className="reference-container footer-layout"><div className="footer-brand"><button className="reference-brand" type="button" onClick={() => scrollToId('top')}><span className="reference-mark">c</span><strong>CHAT GAIN</strong></button><p>Good conversations can make<br />the world feel bigger—and put extra income in your pocket.</p><span>● GLOBAL HOSTING INFRASTRUCTURE</span></div><div className="footer-cta"><span>GLOBAL HOSTING INFRASTRUCTURE</span><h2>There is always<br /><em>a paid chat</em><br />to start.</h2><RegisterButton /></div></div><div className="reference-container footer-bottom"><span>© 2026 CHAT GAIN</span><div><a href="#top">BACK TO TOP</a></div></div></footer>;
 }
 
 function App() {

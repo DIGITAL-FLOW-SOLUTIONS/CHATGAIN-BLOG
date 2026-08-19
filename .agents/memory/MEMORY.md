@@ -1,0 +1,1 @@
+- [Vite HTML asset URLs](vite-html-asset-urls.md) — avoid document-relative "./" URLs in static HTML metadata; Vite may treat them as directory assets during build.
