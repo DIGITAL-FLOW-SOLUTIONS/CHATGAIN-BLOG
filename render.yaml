@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: chat-gain
+    runtime: static
+    buildCommand: >-
+      pnpm install --frozen-lockfile &&
+      PORT=10000 BASE_PATH=/
+      pnpm --filter @workspace/chat-gain run build
+    staticPublishPath: artifacts/chat-gain/dist/public
+    envVars:
+      - key: REDIRECT_LINK
+        sync: false
+      - key: PHONE_NUMBER
+        sync: false
