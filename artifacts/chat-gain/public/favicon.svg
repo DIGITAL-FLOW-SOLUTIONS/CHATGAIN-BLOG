@@ -1,17 +1,22 @@
 <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">CHAT GAIN</title>
-  <desc id="desc">CHAT GAIN purple and pink C mark</desc>
+  <desc id="desc">CHAT GAIN conversation bubble logo with a gain spark</desc>
   <defs>
-    <linearGradient id="favicon-gradient" x1="20" y1="18" x2="160" y2="166" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#9333EA"/>
+    <linearGradient id="logo-bg" x1="18" y1="16" x2="164" y2="168" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
       <stop offset="1" stop-color="#EC4899"/>
     </linearGradient>
-    <filter id="favicon-shadow" x="0" y="0" width="180" height="180" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#7C3AED" flood-opacity=".24"/>
+    <linearGradient id="logo-bubble" x1="42" y1="39" x2="135" y2="137" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF"/>
+      <stop offset="1" stop-color="#F5EAFE"/>
+    </linearGradient>
+    <filter id="logo-shadow" x="0" y="0" width="180" height="180" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#4C1D95" flood-opacity=".28"/>
     </filter>
   </defs>
-  <rect x="10" y="10" width="160" height="160" rx="40" fill="url(#favicon-gradient)" filter="url(#favicon-shadow)"/>
-  <circle cx="90" cy="90" r="54" stroke="white" stroke-width="17"/>
-  <rect x="90" y="27" width="58" height="126" fill="url(#favicon-gradient)"/>
-  <path d="M105 58C96 49 84 45 71 47C50 50 35 68 35 90C35 112 50 130 71 133C84 135 96 131 105 122" stroke="white" stroke-width="17" stroke-linecap="round"/>
+  <rect x="10" y="10" width="160" height="160" rx="46" fill="url(#logo-bg)" filter="url(#logo-shadow)"/>
+  <path d="M45 72C45 51.013 62.013 34 83 34H97C117.987 34 135 51.013 135 72V88C135 108.987 117.987 126 97 126H83C77.665 126 72.54 124.901 67.899 122.925L51 136V113.107C47.185 106.114 45 97.788 45 88V72Z" fill="url(#logo-bubble)"/>
+  <path d="M99 55C94.858 51.149 89.347 49 83.5 49C70.521 49 60 59.521 60 72.5C60 85.479 70.521 96 83.5 96C89.347 96 94.858 93.851 99 90" stroke="#7C3AED" stroke-width="11" stroke-linecap="round"/>
+  <path d="M124 37L127 45L135 48L127 51L124 59L121 51L113 48L121 45L124 37Z" fill="#FDE047"/>
+  <circle cx="109" cy="111" r="4.5" fill="#EC4899"/>
 </svg>
