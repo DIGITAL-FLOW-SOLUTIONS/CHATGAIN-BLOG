@@ -1,5 +1,9 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { ArrowRight, Check, ChevronDown, MessageSquare, Moon, Sun, X } from 'lucide-react';
+import generator1Image from '@assets/generator1_1787062714619.jpeg';
+import generator2Image from '@assets/generator2_1787062714620.jpeg';
+import generator3Image from '@assets/generator3_1787062714618.jpeg';
+import generator4Image from '@assets/generator4_1787062714619.jpeg';
 
 type Person = {
   id: number;
@@ -36,11 +40,11 @@ const people: Person[] = [
 const payouts = ['LINDA W. UGX 25,000 (just now)', 'NAOMI S. UGX 72,000 (30s ago)', 'NAOMI S. UGX 105,000 (just now)', 'CYNTHIA R. UGX 72,000 (just now)', 'SARAH M. UGX 55,000 (30s ago)', 'LINDA W. UGX 210,000 (5m ago)', 'SARAH M. UGX 110,000 (just now)'];
 
 const investmentPlans: InvestmentPlan[] = [
-  { id: 1, name: 'DUROMAX GENERATOR', image: '/investments/generator1.jpeg', deposit: 'UGX 40,000', dailyProfit: 'UGX 12,000', totalDays: '30', totalProfit: 'UGX 360,000' },
-  { id: 2, name: 'HONDA INVERTER', image: '/investments/generator2.jpeg', deposit: 'UGX 55,000', dailyProfit: 'UGX 20,000', totalDays: '30', totalProfit: 'UGX 600,000' },
-  { id: 3, name: 'NINJABATT POWER STATION', image: '/investments/generator3.jpeg', deposit: 'UGX 80,000', dailyProfit: 'UGX 30,000', totalDays: '60', totalProfit: 'UGX 1,800,000' },
-  { id: 4, name: 'DEWALT COMPRESSOR', image: '/investments/generator4.jpeg', deposit: 'UGX 150,000', dailyProfit: 'UGX 45,000', totalDays: '60', totalProfit: 'UGX 2,700,000' },
-  { id: 5, name: 'POWER GENERATOR', image: '/investments/generator1.jpeg', deposit: 'UGX 250,000', dailyProfit: 'UGX 55,000', totalDays: '120', totalProfit: 'UGX 6,600,000' },
+  { id: 1, name: 'DUROMAX GENERATOR', image: generator1Image, deposit: 'UGX 40,000', dailyProfit: 'UGX 12,000', totalDays: '30', totalProfit: 'UGX 360,000' },
+  { id: 2, name: 'HONDA INVERTER', image: generator2Image, deposit: 'UGX 55,000', dailyProfit: 'UGX 20,000', totalDays: '30', totalProfit: 'UGX 600,000' },
+  { id: 3, name: 'NINJABATT POWER STATION', image: generator3Image, deposit: 'UGX 80,000', dailyProfit: 'UGX 30,000', totalDays: '60', totalProfit: 'UGX 1,800,000' },
+  { id: 4, name: 'DEWALT COMPRESSOR', image: generator4Image, deposit: 'UGX 150,000', dailyProfit: 'UGX 45,000', totalDays: '60', totalProfit: 'UGX 2,700,000' },
+  { id: 5, name: 'POWER GENERATOR', image: generator1Image, deposit: 'UGX 250,000', dailyProfit: 'UGX 55,000', totalDays: '120', totalProfit: 'UGX 6,600,000' },
 ];
 
 const faqs = [
