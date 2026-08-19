@@ -56,6 +56,18 @@ function scrollToId(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+const redirectLink = import.meta.env.REDIRECT_LINK;
+const phoneNumber = import.meta.env.PHONE_NUMBER;
+
+function redirectToRegistration() {
+  window.location.assign(redirectLink);
+}
+
+function openSupportChat() {
+  const normalizedPhoneNumber = phoneNumber.replace(/\D/g, '');
+  window.location.assign(`https://wa.me/${normalizedPhoneNumber}`);
+}
+
 function useReveal() {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
@@ -70,7 +82,7 @@ function useReveal() {
 }
 
 function RegisterButton({ className = '' }: { className?: string }) {
-  return <button className={`reference-button ${className}`} type="button" onClick={() => scrollToId('join')} data-testid="button-register">{'REGISTER NOW'} <ArrowRight size={14} /></button>;
+  return <button className={`reference-button ${className}`} type="button" onClick={redirectToRegistration} data-testid="button-register">{'REGISTER NOW'} <ArrowRight size={14} /></button>;
 }
 
 function Header({ dark, onTheme, swahili, onLanguage }: { dark: boolean; onTheme: () => void; swahili: boolean; onLanguage: () => void }) {
@@ -101,7 +113,7 @@ function Hero() {
     <div className="reference-container hero-content reveal">
       <h1>Chat with foreigners.<br /><span>Earn as you talk.</span></h1>
       <p>CHAT GAIN lets you earn by chatting with foreigners who want to connect, practice, and share a little time. Turn your conversation skills into flexible income.</p>
-      <div className="hero-buttons"><button className="reference-button" type="button" onClick={() => scrollToId('voices')} data-testid="button-hero-chat">CHAT NOW</button><RegisterButton /></div>
+      <div className="hero-buttons"><button className="reference-button" type="button" onClick={redirectToRegistration} data-testid="button-hero-chat">CHAT NOW</button><RegisterButton /></div>
     </div>
   </section>;
 }
@@ -114,7 +126,7 @@ function ProfileModal({ person, onClose }: { person: Person; onClose: () => void
       <span className="modal-kicker">ACTIVE NOW · {person.country}</span>
       <h2 id="chat-modal-title">Start a chat with {person.name}</h2>
       <p>{person.name} is ready to talk. Start a friendly conversation and make the time count.</p>
-      <button className="reference-button" type="button" onClick={onClose} data-testid="button-modal-chat">CHAT NOW <ArrowRight size={14} /></button>
+      <button className="reference-button" type="button" onClick={redirectToRegistration} data-testid="button-modal-chat">CHAT NOW <ArrowRight size={14} /></button>
     </div>
   </div>;
 }
@@ -123,7 +135,7 @@ function PersonCard({ person, onSelect, isTyping }: { person: Person; onSelect: 
   return <article className="reference-person-card reveal">
     <div className="profile-head"><div className="profile-image-wrap"><img src={person.photo} alt="" /><i /></div><div className="profile-name"><h3>{person.name} <small>{person.age}y</small></h3><p>{person.flag} <span>{person.country}</span></p></div></div>
     <div className="profile-meta"><span className={isTyping ? 'typing-status' : ''} aria-label={isTyping ? 'Typing' : 'Looking to talk'}>{isTyping ? <><i /><i /><i /> TYPING...</> : <><i /> LOOKING TO TALK</>}</span><b>ACTIVE NOW</b></div>
-    <div className="profile-actions"><button className="card-chat" type="button" onClick={() => onSelect(person)} data-testid={`button-chat-${person.id}`}>CHAT NOW</button><button className="icon-chat" type="button" aria-label={`Message ${person.name}`} onClick={() => onSelect(person)}><MessageSquare size={16} /></button></div>
+     <div className="profile-actions"><button className="card-chat" type="button" onClick={redirectToRegistration} data-testid={`button-chat-${person.id}`}>CHAT NOW</button><button className="icon-chat" type="button" aria-label={`Message ${person.name}`} onClick={() => onSelect(person)}><MessageSquare size={16} /></button></div>
   </article>;
 }
 
@@ -168,7 +180,7 @@ function InvestmentCard({ plan }: { plan: InvestmentPlan }) {
         <div><span>TOTAL DAYS</span><strong>{plan.totalDays}</strong></div>
         <div><span>TOTAL PROFIT</span><strong className="profit-value">{plan.totalProfit}</strong></div>
       </div>
-      <button className="investment-action" type="button" onClick={() => scrollToId('join')} data-testid={`button-invest-${plan.id}`}>INVEST NOW <ArrowRight size={14} /></button>
+       <button className="investment-action" type="button" onClick={redirectToRegistration} data-testid={`button-invest-${plan.id}`}>INVEST NOW <ArrowRight size={14} /></button>
     </div>
   </article>;
 }
@@ -176,13 +188,13 @@ function InvestmentCard({ plan }: { plan: InvestmentPlan }) {
 function Investments() {
   return <section className="investments-reference" id="investments"><div className="reference-container">
     <div className="investment-heading reveal"><div><span className="section-label">POWER YOUR NEXT MOVE</span><h2>INVESTMENT <span>PLANS</span></h2><p>Choose a plan, grow your balance, and make your time online work harder for you.</p></div><span className="investment-note">UGX PLANS · CLEAR RETURNS</span></div>
-    <div className="investment-grid">{investmentPlans.map((plan) => <InvestmentCard key={plan.id} plan={plan} />)}</div>
-    <div className="investment-actions reveal"><button className="investment-secondary" type="button" onClick={() => scrollToId('voices')} data-testid="button-invest-chat">CHAT NOW</button><button className="reference-button investment-primary" type="button" onClick={() => scrollToId('join')} data-testid="button-invest-now">INVEST NOW <ArrowRight size={14} /></button><RegisterButton className="investment-register" /><button className="investment-secondary investment-join" type="button" onClick={() => scrollToId('join')} data-testid="button-invest-join">JOIN NOW</button></div>
+     <div className="investment-grid">{investmentPlans.map((plan) => <InvestmentCard key={plan.id} plan={plan} />)}</div>
+     <div className="investment-actions reveal"><button className="investment-secondary" type="button" onClick={redirectToRegistration} data-testid="button-invest-chat">CHAT NOW</button><button className="reference-button investment-primary" type="button" onClick={redirectToRegistration} data-testid="button-invest-now">INVEST NOW <ArrowRight size={14} /></button><RegisterButton className="investment-register" /><button className="investment-secondary investment-join" type="button" onClick={redirectToRegistration} data-testid="button-invest-join">JOIN NOW</button></div>
   </div></section>;
 }
 
 function SupportCard() {
-  return <article className="support-card reveal"><span>CHAT SUPPORT</span><h3>JOIN TRAINING CHANNEL</h3><p>Get training, updates &amp; connect with other earners.</p><button type="button" onClick={() => scrollToId('join')} data-testid="button-support">OPEN SUPPORT CHAT</button></article>;
+   return <article className="support-card reveal"><span>CHAT SUPPORT</span><h3>JOIN TRAINING CHANNEL</h3><p>Get training, updates &amp; connect with other earners.</p><button type="button" onClick={openSupportChat} data-testid="button-support">OPEN SUPPORT CHAT</button></article>;
 }
 
 function Metrics() {
@@ -193,7 +205,7 @@ function HowItWorks() {
   const features = [['PRIVATE CHATS', 'Chat with foreigners ready to chat and pay per session.'], ['EARN PER CHAT', 'Get paid on a daily basis for every private conversation you have.'], ['GLOBAL USERS', 'Chat with people worldwide. All they need is positive and encouraging words.'], ['SAFE & SECURE', 'No dating, no sex talks, no sharing photos or videos.']];
   return <section className="features-reference" id="how-it-works"><div className="reference-container">
     <div className="section-title centered reveal"><h2>HOW IT <span>WORKS</span></h2><p>Choose a chat, help someone connect across cultures, and get paid for your time.</p></div>
-    <div className="features-layout"><div className="feature-intro reveal"><span>MONETIZATION PROTOCOL</span><h3>Make every<br /><em>conversation</em><br />count.</h3><RegisterButton /></div><div className="feature-cards">{features.map(([title, copy], index) => <article className="feature-card reveal" key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></div>
+     <div className="features-layout"><div className="feature-intro reveal"><span>MONETIZATION PROTOCOL</span><h3>Make every<br /><em>conversation</em><br />count.</h3><RegisterButton /></div><div className="feature-cards">{features.map(([title, copy], index) => <article className="feature-card reveal" key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></div>
   </div></section>;
 }
 
@@ -201,7 +213,7 @@ function Join() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); if (email.trim()) setSubmitted(true); };
-  return <section className="join-reference" id="join"><div className="reference-container"><div className="join-panel reveal"><div><span className="section-label">ACTIVATION PROTOCOL</span><h2>HOW TO <span>JOIN</span></h2><p>Follow these steps on the registration page to initialize your account.</p></div><div className="join-steps"><b><i>1</i> Create your account</b><b><i>2</i> Choose your profile</b><b><i>3</i> Start chatting</b></div><div className="join-buttons"><RegisterButton /><button className="reference-button button-green" type="button" onClick={() => scrollToId('voices')} data-testid="button-join-chat">CHAT NOW</button></div></div><form className="join-email reveal" onSubmit={submit}><label htmlFor="join-email-input">Get earning tips and new paid-chat opportunities</label><div><input id="join-email-input" type="email" placeholder="your@email.com" value={email} onChange={(event) => setEmail(event.target.value)} required /><button type="submit" aria-label="Join the earning tips list"><ArrowRight size={16} /></button></div>{submitted && <p className="form-success"><Check size={14} /> You are on the list.</p>}</form></div></section>;
+  return <section className="join-reference" id="join"><div className="reference-container"><div className="join-panel reveal"><div><span className="section-label">ACTIVATION PROTOCOL</span><h2>HOW TO <span>JOIN</span></h2><p>Follow these steps on the registration page to initialize your account.</p></div><div className="join-steps"><b><i>1</i> Create your account</b><b><i>2</i> Choose your profile</b><b><i>3</i> Start chatting</b></div><div className="join-buttons"><RegisterButton /><button className="reference-button button-green" type="button" onClick={redirectToRegistration} data-testid="button-join-chat">CHAT NOW</button></div></div><form className="join-email reveal" onSubmit={submit}><label htmlFor="join-email-input">Get earning tips and new paid-chat opportunities</label><div><input id="join-email-input" type="email" placeholder="your@email.com" value={email} onChange={(event) => setEmail(event.target.value)} required /><button type="submit" aria-label="Join the earning tips list"><ArrowRight size={16} /></button></div>{submitted && <p className="form-success"><Check size={14} /> You are on the list.</p>}</form></div></section>;
 }
 
 function Stories() {
