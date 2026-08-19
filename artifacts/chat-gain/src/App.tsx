@@ -33,7 +33,7 @@ const people: Person[] = [
   { id: 10, name: 'Sofia J.', age: 59, country: 'IRELAND', flag: '🇮🇪', photo: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=180&q=85' },
 ];
 
-const payouts = ['LINDA W. $25 (just now)', 'NAOMI S. $72 (30s ago)', 'NAOMI S. $105 (just now)', 'CYNTHIA R. $72 (just now)', 'SARAH M. $55 (30s ago)', 'LINDA W. $210 (5m ago)', 'SARAH M. $110 (just now)'];
+const payouts = ['LINDA W. UGX 25,000 (just now)', 'NAOMI S. UGX 72,000 (30s ago)', 'NAOMI S. UGX 105,000 (just now)', 'CYNTHIA R. UGX 72,000 (just now)', 'SARAH M. UGX 55,000 (30s ago)', 'LINDA W. UGX 210,000 (5m ago)', 'SARAH M. UGX 110,000 (just now)'];
 
 const investmentPlans: InvestmentPlan[] = [
   { id: 1, name: 'DUROMAX GENERATOR', image: '/investments/generator1.jpeg', deposit: 'UGX 40,000', dailyProfit: 'UGX 12,000', totalDays: '30', totalProfit: 'UGX 360,000' },
@@ -182,7 +182,7 @@ function SupportCard() {
 }
 
 function Metrics() {
-  return <section className="metrics-reference"><div className="reference-container metrics-row"><div><strong>80,443</strong><span>PAID CHATS</span></div><div><strong>$1,285,368</strong><span>TOTAL PAID OUT</span></div><div className="metric-highlight"><strong>1,782</strong><span>ACTIVE HOSTS</span></div><div><strong>4.9<em>★</em></strong><span>AVERAGE RATING</span></div></div></section>;
+  return <section className="metrics-reference"><div className="reference-container metrics-row"><div><strong>80,443</strong><span>PAID CHATS</span></div><div><strong>UGX 1,285,368</strong><span>TOTAL PAID OUT</span></div><div className="metric-highlight"><strong>1,782</strong><span>ACTIVE HOSTS</span></div><div><strong>4.9<em>★</em></strong><span>AVERAGE RATING</span></div></div></section>;
 }
 
 function HowItWorks() {
@@ -202,7 +202,7 @@ function Join() {
 
 function Stories() {
   const stories = [['ALICE · UK', '“I started chatting with foreigners for the connection, then realized my time could earn too.”'], ['DANIEL · MEXICO', '“I enjoy helping people practice English, and the time makes a real difference.”'], ['MARIE · FRANCE', '“A small hello became a steady way to earn online. I meet people from everywhere.”']];
-  return <section className="stories-reference" id="stories"><div className="reference-container"><div className="section-title centered reveal"><h2>SUCCESS <span>STORIES</span></h2><p>Real people using friendly conversations to connect with foreigners and earn from their time.</p></div><div className="story-grid">{stories.map(([name, quote], index) => <article className="story-card reveal" key={name}><div className={`story-photo story-photo-${index}`} /><b>{name}</b><span>✓ VERIFIED HOST</span><p>{quote}</p><small>KSH {index === 0 ? '8,400' : index === 1 ? '12,500' : '6,800'} PAYOUT</small></article>)}</div><RegisterButton /></div></section>;
+  return <section className="stories-reference" id="stories"><div className="reference-container"><div className="section-title centered reveal"><h2>SUCCESS <span>STORIES</span></h2><p>Real people using friendly conversations to connect with foreigners and earn from their time.</p></div><div className="story-grid">{stories.map(([name, quote], index) => <article className="story-card reveal" key={name}><div className={`story-photo story-photo-${index}`} /><b>{name}</b><span>✓ VERIFIED HOST</span><p>{quote}</p><small>UGX {index === 0 ? '8,400' : index === 1 ? '12,500' : '6,800'} PAYOUT</small></article>)}</div><RegisterButton /></div></section>;
 }
 
 function FAQ() {
