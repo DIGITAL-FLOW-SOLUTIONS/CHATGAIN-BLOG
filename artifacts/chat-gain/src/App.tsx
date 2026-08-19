@@ -129,15 +129,19 @@ function PersonCard({ person, onSelect, isTyping }: { person: Person; onSelect: 
 
 function Voices() {
   const [selected, setSelected] = useState<Person | null>(null);
-  const [typingId, setTypingId] = useState<number | null>(null);
+  const [typingIds, setTypingIds] = useState<number[]>([]);
   useEffect(() => {
     let typingTimer: number;
     const showNextTyping = () => {
       typingTimer = window.setTimeout(() => {
-        const nextPerson = people[Math.floor(Math.random() * people.length)];
-        setTypingId(nextPerson.id);
+        const typingCount = 4 + Math.floor(Math.random() * 2);
+        const nextTypingIds = [...people]
+          .sort(() => Math.random() - 0.5)
+          .slice(0, typingCount)
+          .map((person) => person.id);
+        setTypingIds(nextTypingIds);
         typingTimer = window.setTimeout(() => {
-          setTypingId(null);
+          setTypingIds([]);
           showNextTyping();
         }, 1800 + Math.random() * 2200);
       }, 3200 + Math.random() * 4800);
@@ -147,8 +151,8 @@ function Voices() {
   }, []);
   return <section className="voices-reference" id="voices"><div className="reference-container">
     <div className="live-heading reveal"><div><h2><i /> LIVE FOREIGNERS ONLINE</h2><p>TAP ANY PROFILE TO START A PAID CHAT NOW</p></div></div>
-    <div className="reference-grid">{people.slice(0, 6).map((person, index) => index === 6 ? null : <PersonCard key={person.id} person={person} isTyping={typingId === person.id} onSelect={setSelected} />)}<SupportCard /></div>
-    <div className="reference-grid reference-grid-lower">{people.slice(6).map((person) => <PersonCard key={person.id} person={person} isTyping={typingId === person.id} onSelect={setSelected} />)}</div>
+    <div className="reference-grid">{people.slice(0, 6).map((person, index) => index === 6 ? null : <PersonCard key={person.id} person={person} isTyping={typingIds.includes(person.id)} onSelect={setSelected} />)}<SupportCard /></div>
+    <div className="reference-grid reference-grid-lower">{people.slice(6).map((person) => <PersonCard key={person.id} person={person} isTyping={typingIds.includes(person.id)} onSelect={setSelected} />)}</div>
     <button className="more-button reveal" type="button" onClick={() => scrollToId('join')} data-testid="button-more-chats">SHOW MORE <ArrowRight size={14} /></button>
   </div>{selected && <ProfileModal person={selected} onClose={() => setSelected(null)} />}</section>;
 }
