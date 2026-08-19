@@ -119,20 +119,36 @@ function ProfileModal({ person, onClose }: { person: Person; onClose: () => void
   </div>;
 }
 
-function PersonCard({ person, onSelect }: { person: Person; onSelect: (person: Person) => void }) {
+function PersonCard({ person, onSelect, isTyping }: { person: Person; onSelect: (person: Person) => void; isTyping: boolean }) {
   return <article className="reference-person-card reveal">
     <div className="profile-head"><div className="profile-image-wrap"><img src={person.photo} alt="" /><i /></div><div className="profile-name"><h3>{person.name} <small>{person.age}y</small></h3><p>{person.flag} <span>{person.country}</span></p></div></div>
-    <div className="profile-meta"><span><i /> LOOKING TO TALK</span><b>ACTIVE NOW</b></div>
+    <div className="profile-meta"><span className={isTyping ? 'typing-status' : ''} aria-label={isTyping ? 'Typing' : 'Looking to talk'}>{isTyping ? <><i /><i /><i /> TYPING...</> : <><i /> LOOKING TO TALK</>}</span><b>ACTIVE NOW</b></div>
     <div className="profile-actions"><button className="card-chat" type="button" onClick={() => onSelect(person)} data-testid={`button-chat-${person.id}`}>CHAT NOW</button><button className="icon-chat" type="button" aria-label={`Message ${person.name}`} onClick={() => onSelect(person)}><MessageSquare size={16} /></button></div>
   </article>;
 }
 
 function Voices() {
   const [selected, setSelected] = useState<Person | null>(null);
+  const [typingId, setTypingId] = useState<number | null>(null);
+  useEffect(() => {
+    let typingTimer: number;
+    const showNextTyping = () => {
+      typingTimer = window.setTimeout(() => {
+        const nextPerson = people[Math.floor(Math.random() * people.length)];
+        setTypingId(nextPerson.id);
+        typingTimer = window.setTimeout(() => {
+          setTypingId(null);
+          showNextTyping();
+        }, 1800 + Math.random() * 2200);
+      }, 3200 + Math.random() * 4800);
+    };
+    showNextTyping();
+    return () => window.clearTimeout(typingTimer);
+  }, []);
   return <section className="voices-reference" id="voices"><div className="reference-container">
     <div className="live-heading reveal"><div><h2><i /> LIVE FOREIGNERS ONLINE</h2><p>TAP ANY PROFILE TO START A PAID CHAT NOW</p></div></div>
-    <div className="reference-grid">{people.slice(0, 6).map((person, index) => index === 6 ? null : <PersonCard key={person.id} person={person} onSelect={setSelected} />)}<SupportCard /></div>
-    <div className="reference-grid reference-grid-lower">{people.slice(6).map((person) => <PersonCard key={person.id} person={person} onSelect={setSelected} />)}</div>
+    <div className="reference-grid">{people.slice(0, 6).map((person, index) => index === 6 ? null : <PersonCard key={person.id} person={person} isTyping={typingId === person.id} onSelect={setSelected} />)}<SupportCard /></div>
+    <div className="reference-grid reference-grid-lower">{people.slice(6).map((person) => <PersonCard key={person.id} person={person} isTyping={typingId === person.id} onSelect={setSelected} />)}</div>
     <button className="more-button reveal" type="button" onClick={() => scrollToId('join')} data-testid="button-more-chats">SHOW MORE <ArrowRight size={14} /></button>
   </div>{selected && <ProfileModal person={selected} onClose={() => setSelected(null)} />}</section>;
 }
