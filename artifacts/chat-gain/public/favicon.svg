@@ -1,3 +1,17 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="180" height="180" rx="36" fill="#FF3C00"/>
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">CHAT GAIN</title>
+  <desc id="desc">CHAT GAIN purple and pink C mark</desc>
+  <defs>
+    <linearGradient id="favicon-gradient" x1="20" y1="18" x2="160" y2="166" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9333EA"/>
+      <stop offset="1" stop-color="#EC4899"/>
+    </linearGradient>
+    <filter id="favicon-shadow" x="0" y="0" width="180" height="180" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#7C3AED" flood-opacity=".24"/>
+    </filter>
+  </defs>
+  <rect x="10" y="10" width="160" height="160" rx="40" fill="url(#favicon-gradient)" filter="url(#favicon-shadow)"/>
+  <circle cx="90" cy="90" r="54" stroke="white" stroke-width="17"/>
+  <rect x="90" y="27" width="58" height="126" fill="url(#favicon-gradient)"/>
+  <path d="M105 58C96 49 84 45 71 47C50 50 35 68 35 90C35 112 50 130 71 133C84 135 96 131 105 122" stroke="white" stroke-width="17" stroke-linecap="round"/>
 </svg>
