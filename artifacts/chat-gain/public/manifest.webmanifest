@@ -1,0 +1,18 @@
+{
+  "name": "CHAT GAIN — Chat with Foreigners & Earn Online",
+  "short_name": "CHAT GAIN",
+  "description": "Chat with foreigners, build meaningful connections, and explore flexible online business opportunities.",
+  "lang": "en-UG",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#7c3aed",
+  "background_color": "#fffaff",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
