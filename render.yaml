@@ -10,5 +10,5 @@ services:
     envVars:
       - key: REDIRECT_LINK
         sync: false
-      - key: PHONE_NUMBER
+      - key: SUPPORT_LINK
         sync: false

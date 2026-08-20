@@ -61,15 +61,14 @@ function scrollToId(id: string) {
 }
 
 const redirectLink = import.meta.env.REDIRECT_LINK;
-const phoneNumber = import.meta.env.PHONE_NUMBER;
+const supportLink = import.meta.env.SUPPORT_LINK;
 
 function redirectToRegistration() {
   window.location.assign(redirectLink);
 }
 
 function openSupportChat() {
-  const normalizedPhoneNumber = phoneNumber.replace(/\D/g, '');
-  window.location.assign(`https://wa.me/${normalizedPhoneNumber}`);
+  window.location.assign(supportLink);
 }
 
 function useReveal() {
