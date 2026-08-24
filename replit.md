@@ -34,14 +34,21 @@ Directory, use that package-level config and set Output Directory to `dist/publi
 (not `public`). Do not leave a dashboard override of `public`, because that
 directory is not created by the Vite build.
 
-Set these Vercel Project Environment Variables for the CTA links:
+This is a frontend-only Vercel deployment; the API server is not required for
+the current app.
+
+Set these Vercel Project Environment Variables for the editable CTA links:
 
 - `REDIRECT_LINK`
 - `SUPPORT_LINK`
 
-The `api-server` remains a separate Express service and is not included in this
-static Vercel deployment. It requires `DATABASE_URL` and a Node server runtime;
-deploy it separately if API endpoints are needed.
+These values are ordinary links, not application secrets. Keeping them as
+environment variables makes the destination links easy to change in Vercel
+without rebuilding the frontend source manually.
+
+The inactive `api-server` remains a separate Express service and is not included
+in this static Vercel deployment. It only matters if API endpoints are added in
+the future.
 
 ## Stack
 
