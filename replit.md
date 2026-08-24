@@ -12,6 +12,25 @@ A responsive React/Vite replica of the CHAT GAIN landing page, with live payout 
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
 - Required env for the API server: `DATABASE_URL` — Postgres connection string
 
+## Vercel deployment
+
+The root `vercel.json` deploys the static CHAT GAIN web app from the pnpm workspace.
+Vercel will:
+
+1. Install dependencies with `pnpm install --frozen-lockfile`
+2. Build `@workspace/chat-gain` with `PORT=3000` and `BASE_PATH=/`
+3. Serve `artifacts/chat-gain/dist/public`
+4. Route extensionless paths back to the SPA entry point
+
+Set these Vercel Project Environment Variables for the CTA links:
+
+- `REDIRECT_LINK`
+- `SUPPORT_LINK`
+
+The `api-server` remains a separate Express service and is not included in this
+static Vercel deployment. It requires `DATABASE_URL` and a Node server runtime;
+deploy it separately if API endpoints are needed.
+
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
