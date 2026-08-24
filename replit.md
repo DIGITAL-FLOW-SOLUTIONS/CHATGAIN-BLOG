@@ -15,12 +15,24 @@ A responsive React/Vite replica of the CHAT GAIN landing page, with live payout 
 ## Vercel deployment
 
 The root `vercel.json` deploys the static CHAT GAIN web app from the pnpm workspace.
-Vercel will:
+There is also a package-level `artifacts/chat-gain/vercel.json` for Vercel projects
+whose Root Directory is set to `artifacts/chat-gain`. Vercel will:
 
 1. Install dependencies with `pnpm install --frozen-lockfile`
 2. Build `@workspace/chat-gain` with `PORT=3000` and `BASE_PATH=/`
 3. Serve `artifacts/chat-gain/dist/public`
 4. Route extensionless paths back to the SPA entry point
+
+Recommended Vercel Project Settings:
+
+- Root Directory: repository root (`./`)
+- Framework Preset: Vite
+- Build Command and Output Directory: leave as defined by `vercel.json`
+
+If the Vercel project intentionally uses `artifacts/chat-gain` as its Root
+Directory, use that package-level config and set Output Directory to `dist/public`
+(not `public`). Do not leave a dashboard override of `public`, because that
+directory is not created by the Vite build.
 
 Set these Vercel Project Environment Variables for the CTA links:
 
