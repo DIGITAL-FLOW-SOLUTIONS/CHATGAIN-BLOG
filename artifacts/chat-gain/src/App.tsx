@@ -54,6 +54,9 @@ const faqs = [
   ['HOW DO I GET PAID?', 'Payouts are processed through mobile money and other verified gateways. You can track the time you spend and your earnings inside the platform.'],
   ['IS CHAT GAIN LEGITIMATE?', 'You stay in control at every step. Use our report tools, protect your personal information, and leave any conversation that does not feel right.'],
   ['WHEN CAN I WITHDRAW MY EARNINGS?', 'Create your profile, choose your languages and topics, set when you are available, and start accepting paid chats with foreigners who want to connect.'],
+  ['HOW DO I SIGN UP FOR MALIGAIN?', 'Select any REGISTER NOW or JOIN NOW button to open the official MALIGAIN account link, then follow the registration instructions on that page.'],
+  ['HOW DO I LOG IN TO MALIGAIN?', 'Open the official MALIGAIN account link and choose the login option if you already have an account. Use only the official destination provided by MALIGAIN.'],
+  ['WHAT ARE MALIGAIN AGENCIES?', 'For current MALIGAIN agency, training, and support information, use the official support channel linked on this website.'],
 ];
 
 function scrollToId(id: string) {
