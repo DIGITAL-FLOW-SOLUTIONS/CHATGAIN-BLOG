@@ -107,7 +107,6 @@ function Header({ dark, onTheme, swahili, onLanguage }: { dark: boolean; onTheme
       </div>
     </nav>
     <div className="payout-strip" aria-label="Recent payout activity">
-      <span className="payout-lead"><i /> LIVE PAYOUTS</span>
       <div className="payout-track">{[...payouts, ...payouts].map((payout, index) => <span key={`${payout}-${index}`}>{payout}</span>)}</div>
     </div>
   </header>;
