@@ -24,6 +24,13 @@ type InvestmentPlan = {
   totalProfit: string;
 };
 
+type Hotel = {
+  name: string;
+  location: string;
+  image: string;
+  description: string;
+};
+
 const people: Person[] = [
   { id: 1, name: 'Margaret W.', age: 58, country: 'USA', flag: '🇺🇸', photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=180&q=85' },
   { id: 2, name: 'Robert H.', age: 62, country: 'UK', flag: '🇬🇧', photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=180&q=85' },
@@ -37,14 +44,27 @@ const people: Person[] = [
   { id: 10, name: 'Sofia J.', age: 59, country: 'IRELAND', flag: '🇮🇪', photo: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=180&q=85' },
 ];
 
-const payouts = ['LINDA W. UGX 25,000 (just now)', 'NAOMI S. UGX 72,000 (30s ago)', 'NAOMI S. UGX 105,000 (just now)', 'CYNTHIA R. UGX 72,000 (just now)', 'SARAH M. UGX 55,000 (30s ago)', 'LINDA W. UGX 210,000 (5m ago)', 'SARAH M. UGX 110,000 (just now)'];
+const payouts = ['LINDA W. KES 25,000 (just now)', 'NAOMI S. KES 72,000 (30s ago)', 'NAOMI S. KES 105,000 (just now)', 'CYNTHIA R. KES 72,000 (just now)', 'SARAH M. KES 55,000 (30s ago)', 'LINDA W. KES 210,000 (5m ago)', 'SARAH M. KES 110,000 (just now)'];
 
 const investmentPlans: InvestmentPlan[] = [
-  { id: 1, name: 'DUROMAX GENERATOR', image: generator1Image, deposit: 'UGX 40,000', dailyProfit: 'UGX 12,000', totalDays: '30', totalProfit: 'UGX 360,000' },
-  { id: 2, name: 'HONDA INVERTER', image: generator2Image, deposit: 'UGX 55,000', dailyProfit: 'UGX 20,000', totalDays: '30', totalProfit: 'UGX 600,000' },
-  { id: 3, name: 'NINJABATT POWER STATION', image: generator3Image, deposit: 'UGX 80,000', dailyProfit: 'UGX 30,000', totalDays: '60', totalProfit: 'UGX 1,800,000' },
-  { id: 4, name: 'DEWALT COMPRESSOR', image: generator4Image, deposit: 'UGX 150,000', dailyProfit: 'UGX 45,000', totalDays: '60', totalProfit: 'UGX 2,700,000' },
-  { id: 5, name: 'POWER GENERATOR', image: generator1Image, deposit: 'UGX 250,000', dailyProfit: 'UGX 55,000', totalDays: '120', totalProfit: 'UGX 6,600,000' },
+  { id: 1, name: 'DUROMAX GENERATOR', image: generator1Image, deposit: 'KES 40,000', dailyProfit: 'KES 12,000', totalDays: '30', totalProfit: 'KES 360,000' },
+  { id: 2, name: 'HONDA INVERTER', image: generator2Image, deposit: 'KES 55,000', dailyProfit: 'KES 20,000', totalDays: '30', totalProfit: 'KES 600,000' },
+  { id: 3, name: 'NINJABATT POWER STATION', image: generator3Image, deposit: 'KES 80,000', dailyProfit: 'KES 30,000', totalDays: '60', totalProfit: 'KES 1,800,000' },
+  { id: 4, name: 'DEWALT COMPRESSOR', image: generator4Image, deposit: 'KES 150,000', dailyProfit: 'KES 45,000', totalDays: '60', totalProfit: 'KES 2,700,000' },
+  { id: 5, name: 'POWER GENERATOR', image: generator1Image, deposit: 'KES 250,000', dailyProfit: 'KES 55,000', totalDays: '120', totalProfit: 'KES 6,600,000' },
+];
+
+const hotels: Hotel[] = [
+  { name: 'The Z Hotel', location: 'Nungwi, Zanzibar', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=85', description: 'A beachfront boutique stay with tropical gardens, ocean views and a relaxed island atmosphere.' },
+  { name: 'Be Zanzibar', location: 'Jambiani, Zanzibar', image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=85', description: 'A beachfront boutique retreat with direct beach access, tropical surroundings and a calm island feel.' },
+  { name: 'Hotel Sapphire', location: 'Mombasa, Kenya', image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=900&q=85', description: 'A modern city retreat offering comfortable rooms, dining, wellness facilities and a rooftop pool.' },
+  { name: 'Sarova Whitesands', location: 'Mombasa, Kenya', image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=85', description: 'A coastal resort experience with beach access, leisure facilities and a relaxed tropical setting.' },
+  { name: 'PrideInn Paradise', location: 'Mombasa, Kenya', image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=900&q=85', description: 'A beachfront resort setting designed for leisure, family stays, events and coastal escapes.' },
+  { name: 'Bluebay Beach Resort', location: 'Matemwe, Zanzibar', image: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=900&q=85', description: 'A luxury beachfront resort surrounded by tropical gardens and the Indian Ocean.' },
+  { name: 'Sunshine Marine Lodge', location: 'Zanzibar, Tanzania', image: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=900&q=85', description: 'An island resort experience with ocean activities, wellness experiences and tropical surroundings.' },
+  { name: 'Amani Boutique Hotel', location: 'Paje, Zanzibar', image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=900&q=85', description: 'An intimate beachfront retreat focused on quiet comfort, elegant rooms and a peaceful atmosphere.' },
+  { name: 'SBH Monica Zanzibar', location: 'Paje, Zanzibar', image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=900&q=85', description: 'A beachfront resort with comfortable rooms, restaurants, leisure facilities and ocean views.' },
+  { name: 'The Sands Beach Resort', location: 'Dongwe, Zanzibar', image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=900&q=85', description: 'A beachfront escape with villas, tropical gardens, relaxed dining and Indian Ocean views.' },
 ];
 
 const faqs = [
@@ -192,9 +212,24 @@ function InvestmentCard({ plan }: { plan: InvestmentPlan }) {
 
 function Investments() {
   return <section className="investments-reference" id="investments"><div className="reference-container">
-    <div className="investment-heading reveal"><div><span className="section-label">POWER YOUR NEXT MOVE</span><h2>INVESTMENT <span>PLANS</span></h2><p>Choose a plan, grow your balance, and make your time online work harder for you.</p></div><span className="investment-note">UGX PLANS · CLEAR RETURNS</span></div>
+    <div className="investment-heading reveal"><div><span className="section-label">POWER YOUR NEXT MOVE</span><h2>INVESTMENT <span>PLANS</span></h2><p>Choose a plan, grow your balance, and make your time online work harder for you.</p></div><span className="investment-note">KES PLANS · CLEAR RETURNS</span></div>
      <div className="investment-grid">{investmentPlans.map((plan) => <InvestmentCard key={plan.id} plan={plan} />)}</div>
      <div className="investment-actions reveal"><button className="investment-secondary" type="button" onClick={redirectToRegistration} data-testid="button-invest-chat">CHAT NOW</button><button className="reference-button investment-primary" type="button" onClick={redirectToRegistration} data-testid="button-invest-now">INVEST NOW <ArrowRight size={14} /></button><RegisterButton className="investment-register" /><button className="investment-secondary investment-join" type="button" onClick={redirectToRegistration} data-testid="button-invest-join">JOIN NOW</button></div>
+  </div></section>;
+}
+
+function ReviewHotels() {
+  return <section className="hotels-reference" id="review-hotels"><div className="reference-container">
+    <div className="section-title centered reveal"><span className="section-label">PROPERTY REVIEW OPPORTUNITIES</span><h2>REVIEW <span>HOTELS</span></h2><p>Explore hotel opportunities, learn about different properties and get started with hotel review tasks.</p></div>
+    <div className="hotel-grid">{hotels.map((hotel) => <article className="hotel-card reveal" key={hotel.name}>
+      <div className="hotel-image-wrap"><img src={hotel.image} alt={`${hotel.name} in ${hotel.location}`} loading="lazy" /></div>
+      <div className="hotel-card-content">
+        <span className="hotel-location">{hotel.location}</span>
+        <h3>{hotel.name}</h3>
+        <p>{hotel.description}</p>
+        <button className="hotel-action" type="button" onClick={redirectToRegistration} data-testid={`button-review-hotel-${hotel.name.toLowerCase().replaceAll(' ', '-')}`}>REVIEW HOTEL <ArrowRight size={13} /></button>
+      </div>
+    </article>)}</div>
   </div></section>;
 }
 
@@ -203,7 +238,7 @@ function SupportCard() {
 }
 
 function Metrics() {
-  return <section className="metrics-reference"><div className="reference-container metrics-row"><div><strong>80,443</strong><span>PAID CHATS</span></div><div><strong>UGX 1,285,368</strong><span>TOTAL PAID OUT</span></div><div className="metric-highlight"><strong>1,782</strong><span>ACTIVE HOSTS</span></div><div><strong>4.9<em>★</em></strong><span>AVERAGE RATING</span></div></div></section>;
+  return <section className="metrics-reference"><div className="reference-container metrics-row"><div><strong>80,443</strong><span>PAID CHATS</span></div><div><strong>KES 1,285,368</strong><span>TOTAL PAID OUT</span></div><div className="metric-highlight"><strong>1,782</strong><span>ACTIVE HOSTS</span></div><div><strong>4.9<em>★</em></strong><span>AVERAGE RATING</span></div></div></section>;
 }
 
 function HowItWorks() {
@@ -223,7 +258,7 @@ function Join() {
 
 function Stories() {
   const stories = [['ALICE · UK', '“I started chatting with foreigners for the connection, then realized my time could earn too.”'], ['DANIEL · MEXICO', '“I enjoy helping people practice English, and the time makes a real difference.”'], ['MARIE · FRANCE', '“A small hello became a steady way to earn online. I meet people from everywhere.”']];
-  return <section className="stories-reference" id="stories"><div className="reference-container"><div className="section-title centered reveal"><h2>SUCCESS <span>STORIES</span></h2><p>Real people using friendly conversations to connect with foreigners and earn from their time.</p></div><div className="story-grid">{stories.map(([name, quote], index) => <article className="story-card reveal" key={name}><div className={`story-photo story-photo-${index}`} /><b>{name}</b><span>✓ VERIFIED HOST</span><p>{quote}</p><small>UGX {index === 0 ? '8,400' : index === 1 ? '12,500' : '6,800'} PAYOUT</small></article>)}</div><RegisterButton /></div></section>;
+  return <section className="stories-reference" id="stories"><div className="reference-container"><div className="section-title centered reveal"><h2>SUCCESS <span>STORIES</span></h2><p>Real people using friendly conversations to connect with foreigners and earn from their time.</p></div><div className="story-grid">{stories.map(([name, quote], index) => <article className="story-card reveal" key={name}><div className={`story-photo story-photo-${index}`} /><b>{name}</b><span>✓ VERIFIED HOST</span><p>{quote}</p><small>KES {index === 0 ? '8,400' : index === 1 ? '12,500' : '6,800'} PAYOUT</small></article>)}</div><RegisterButton /></div></section>;
 }
 
 function FAQ() {
@@ -240,7 +275,7 @@ function App() {
   const [swahili, setSwahili] = useState(false);
   useReveal();
   useEffect(() => { document.documentElement.classList.toggle('dark', dark); }, [dark]);
-  return <div className="site-reference"><Header dark={dark} onTheme={() => setDark((value) => !value)} swahili={swahili} onLanguage={() => setSwahili((value) => !value)} /><main><Hero /><Voices /><Investments /><Metrics /><HowItWorks /><Join /><Stories /><FAQ /></main><Footer /></div>;
+  return <div className="site-reference"><Header dark={dark} onTheme={() => setDark((value) => !value)} swahili={swahili} onLanguage={() => setSwahili((value) => !value)} /><main><Hero /><Voices /><ReviewHotels /><Investments /><Metrics /><HowItWorks /><Join /><Stories /><FAQ /></main><Footer /></div>;
 }
 
 export default App;
