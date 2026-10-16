@@ -322,6 +322,186 @@ const people: Person[] = [
     photo: "https://randomuser.me/api/portraits/men/20.jpg",
     interest: "Cycling & travel",
   },
+  {
+    id: 31,
+    name: "Elena V.",
+    age: 53,
+    country: "PORTUGAL",
+    flag: "🇵🇹",
+    photo: "https://randomuser.me/api/portraits/women/21.jpg",
+    interest: "Cooking & coastal walks",
+  },
+  {
+    id: 32,
+    name: "Gabriel C.",
+    age: 60,
+    country: "ARGENTINA",
+    flag: "🇦🇷",
+    photo: "https://randomuser.me/api/portraits/men/21.jpg",
+    interest: "Football & coffee",
+  },
+  {
+    id: 33,
+    name: "Amelie T.",
+    age: 49,
+    country: "BELGIUM",
+    flag: "🇧🇪",
+    photo: "https://randomuser.me/api/portraits/women/22.jpg",
+    interest: "Art galleries & books",
+  },
+  {
+    id: 34,
+    name: "Jonas L.",
+    age: 62,
+    country: "AUSTRIA",
+    flag: "🇦🇹",
+    photo: "https://randomuser.me/api/portraits/men/22.jpg",
+    interest: "Hiking & jazz",
+  },
+  {
+    id: 35,
+    name: "Priya S.",
+    age: 48,
+    country: "INDIA",
+    flag: "🇮🇳",
+    photo: "https://randomuser.me/api/portraits/women/23.jpg",
+    interest: "Languages & festivals",
+  },
+  {
+    id: 36,
+    name: "Diego M.",
+    age: 56,
+    country: "COLOMBIA",
+    flag: "🇨🇴",
+    photo: "https://randomuser.me/api/portraits/men/23.jpg",
+    interest: "Photography & food",
+  },
+  {
+    id: 37,
+    name: "Isabel R.",
+    age: 52,
+    country: "MEXICO",
+    flag: "🇲🇽",
+    photo: "https://randomuser.me/api/portraits/women/24.jpg",
+    interest: "Travel & cinema",
+  },
+  {
+    id: 38,
+    name: "Noah K.",
+    age: 64,
+    country: "SWITZERLAND",
+    flag: "🇨🇭",
+    photo: "https://randomuser.me/api/portraits/men/24.jpg",
+    interest: "Reading & mountain trips",
+  },
+  {
+    id: 39,
+    name: "Mei L.",
+    age: 50,
+    country: "TAIWAN",
+    flag: "🇹🇼",
+    photo: "https://randomuser.me/api/portraits/women/25.jpg",
+    interest: "Tea & design",
+  },
+  {
+    id: 40,
+    name: "Alex D.",
+    age: 59,
+    country: "SCOTLAND",
+    flag: "🇬🇧",
+    photo: "https://randomuser.me/api/portraits/men/25.jpg",
+    interest: "Music & history",
+  },
+  {
+    id: 41,
+    name: "Fatima A.",
+    age: 47,
+    country: "EGYPT",
+    flag: "🇪🇬",
+    photo: "https://randomuser.me/api/portraits/women/26.jpg",
+    interest: "Food & family stories",
+  },
+  {
+    id: 42,
+    name: "Luca B.",
+    age: 61,
+    country: "ITALY",
+    flag: "🇮🇹",
+    photo: "https://randomuser.me/api/portraits/men/26.jpg",
+    interest: "Travel & football",
+  },
+  {
+    id: 43,
+    name: "Zoe C.",
+    age: 54,
+    country: "GREECE",
+    flag: "🇬🇷",
+    photo: "https://randomuser.me/api/portraits/women/27.jpg",
+    interest: "Island escapes & cooking",
+  },
+  {
+    id: 44,
+    name: "Erik N.",
+    age: 63,
+    country: "FINLAND",
+    flag: "🇫🇮",
+    photo: "https://randomuser.me/api/portraits/men/27.jpg",
+    interest: "Nature & winter walks",
+  },
+  {
+    id: 45,
+    name: "Lucia F.",
+    age: 51,
+    country: "CHILE",
+    flag: "🇨🇱",
+    photo: "https://randomuser.me/api/portraits/women/28.jpg",
+    interest: "Art & Latin music",
+  },
+  {
+    id: 46,
+    name: "Tomasz W.",
+    age: 65,
+    country: "CZECHIA",
+    flag: "🇨🇿",
+    photo: "https://randomuser.me/api/portraits/men/28.jpg",
+    interest: "Cycling & museums",
+  },
+  {
+    id: 47,
+    name: "Sofia M.",
+    age: 55,
+    country: "TURKEY",
+    flag: "🇹🇷",
+    photo: "https://randomuser.me/api/portraits/women/29.jpg",
+    interest: "Books & travel",
+  },
+  {
+    id: 48,
+    name: "Hugo P.",
+    age: 58,
+    country: "ICELAND",
+    flag: "🇮🇸",
+    photo: "https://randomuser.me/api/portraits/men/29.jpg",
+    interest: "Cinema & outdoor life",
+  },
+  {
+    id: 49,
+    name: "Amina J.",
+    age: 50,
+    country: "NIGERIA",
+    flag: "🇳🇬",
+    photo: "https://randomuser.me/api/portraits/women/30.jpg",
+    interest: "Food & new cultures",
+  },
+  {
+    id: 50,
+    name: "Emil R.",
+    age: 62,
+    country: "HUNGARY",
+    flag: "🇭🇺",
+    photo: "https://randomuser.me/api/portraits/men/30.jpg",
+    interest: "Technology & live music",
+  },
 ];
 
 const payouts = [
@@ -795,7 +975,7 @@ function Voices() {
   const [selected, setSelected] = useState<Person | null>(null);
   const [communityOnlineCount, setCommunityOnlineCount] = useState(1459);
   const [onlineIds, setOnlineIds] = useState<number[]>(() =>
-    people.slice(0, 26).map((person) => person.id),
+    people.slice(0, 44).map((person) => person.id),
   );
   const [typingIds, setTypingIds] = useState<number[]>(() =>
     people.slice(0, 8).map((person) => person.id),
@@ -897,7 +1077,7 @@ function Voices() {
 
     activityTimer = window.setInterval(() => {
       const currentlyOnline = onlineIdsRef.current;
-      const canGoAway = currentlyOnline.length > 22;
+      const canGoAway = currentlyOnline.length > 44;
       const candidates = canGoAway
         ? people
         : people.filter((person) => !currentlyOnline.includes(person.id));
@@ -936,7 +1116,7 @@ function Voices() {
             </h2>
             <p>Choose a profile and start a conversation</p>
             <span className="activity-preview-note">
-              30 sample profiles · online count and activity are a visual preview
+              50 sample profiles · online count and activity are a visual preview
             </span>
           </div>
           <div className="live-activity-panel">
