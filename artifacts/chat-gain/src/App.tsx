@@ -699,11 +699,13 @@ function PersonCard({
   onSelect,
   isTyping,
   isOnline,
+  typingMessage,
 }: {
   person: Person;
   onSelect: (person: Person) => void;
   isTyping: boolean;
   isOnline: boolean;
+  typingMessage?: string;
 }) {
   return (
     <article className="reference-person-card reveal">
@@ -765,6 +767,18 @@ function PersonCard({
           {isOnline ? "ONLINE" : "AWAY"}
         </b>
       </div>
+      <div
+        className={`profile-message-preview${typingMessage ? " has-message" : " is-idle"}`}
+        aria-label={typingMessage ? `${person.name} typed: ${typingMessage}` : undefined}
+        aria-hidden={typingMessage ? undefined : true}
+      >
+        {typingMessage && (
+          <>
+            <i />
+            <span>{typingMessage}</span>
+          </>
+        )}
+      </div>
       <div className="profile-actions">
         <button
           className="card-chat"
@@ -794,12 +808,29 @@ function Voices() {
     people.slice(0, 26).map((person) => person.id),
   );
   const [typingIds, setTypingIds] = useState<number[]>(() =>
-    people.slice(0, 3).map((person) => person.id),
+    people.slice(0, 8).map((person) => person.id),
   );
+  const [typingMessages, setTypingMessages] = useState<Record<number, string>>({});
   const [recentActivity, setRecentActivity] = useState(
     "A few profiles are starting conversations",
   );
+  const [joinToast, setJoinToast] = useState<{ id: number; person: Person } | null>(
+    null,
+  );
   const onlineIdsRef = useRef(onlineIds);
+
+  const messageSnippets = [
+    "Hey!",
+    "Hola!",
+    "Ola!",
+    "How are you?",
+    "Hello there!",
+    "Nice to meet you",
+    "What's up?",
+    "Good morning!",
+    "Where are you from?",
+    "😊",
+  ];
 
   useEffect(() => {
     onlineIdsRef.current = onlineIds;
@@ -807,31 +838,60 @@ function Voices() {
 
   useEffect(() => {
     let typingTimer = 0;
-    let nextTypingTimer = 0;
-    const showNextTyping = () => {
+    let activityTimer = 0;
+    let joinTimer = 0;
+    let dismissToastTimer = 0;
+    let toastSequence = 0;
+
+    const updateTypingActivity = () => {
       const available = people.filter((person) =>
         onlineIdsRef.current.includes(person.id),
       );
+      const shuffled = [...available].sort(() => Math.random() - 0.5);
       const typingCount = Math.min(
         available.length,
+        6 + Math.floor(Math.random() * 6),
+      );
+      const nextTypingIds = shuffled
+        .slice(0, typingCount)
+        .map((person) => person.id);
+      const messageCount = Math.min(
+        nextTypingIds.length,
         3 + Math.floor(Math.random() * 4),
       );
-      setTypingIds(
-        [...available]
-          .sort(() => Math.random() - 0.5)
-          .slice(0, typingCount)
-          .map((person) => person.id),
-      );
-      typingTimer = window.setTimeout(() => {
-        setTypingIds([]);
-        nextTypingTimer = window.setTimeout(
-          showNextTyping,
-          1800 + Math.random() * 2200,
-        );
-      }, 1800 + Math.random() * 1500);
+      const nextMessages: Record<number, string> = {};
+
+      nextTypingIds.slice(0, messageCount).forEach((personId) => {
+        nextMessages[personId] =
+          messageSnippets[Math.floor(Math.random() * messageSnippets.length)];
+      });
+
+      setTypingIds(nextTypingIds);
+      setTypingMessages(nextMessages);
     };
-    const firstTypingTimer = window.setTimeout(showNextTyping, 1200);
-    const activityTimer = window.setInterval(() => {
+
+    const showJoinToast = () => {
+      const person = people[Math.floor(Math.random() * people.length)];
+      if (!person) return;
+
+      setOnlineIds((current) =>
+        current.includes(person.id) ? current : [...current, person.id],
+      );
+      setRecentActivity(`${person.name} from ${person.country} just joined`);
+      setJoinToast({ id: ++toastSequence, person });
+      window.clearTimeout(dismissToastTimer);
+      dismissToastTimer = window.setTimeout(() => setJoinToast(null), 4800);
+
+      joinTimer = window.setTimeout(
+        showJoinToast,
+        10500 + Math.random() * 6500,
+      );
+    };
+
+    updateTypingActivity();
+    typingTimer = window.setInterval(updateTypingActivity, 1250);
+
+    activityTimer = window.setInterval(() => {
       const currentlyOnline = onlineIdsRef.current;
       const canGoAway = currentlyOnline.length > 22;
       const candidates = canGoAway
@@ -851,11 +911,13 @@ function Voices() {
       );
     }, 7600);
 
+    joinTimer = window.setTimeout(showJoinToast, 3300);
+
     return () => {
-      window.clearTimeout(firstTypingTimer);
-      window.clearTimeout(typingTimer);
-      window.clearTimeout(nextTypingTimer);
+      window.clearInterval(typingTimer);
       window.clearInterval(activityTimer);
+      window.clearTimeout(joinTimer);
+      window.clearTimeout(dismissToastTimer);
     };
   }, []);
 
@@ -892,6 +954,7 @@ function Voices() {
                 onlineIds.includes(person.id) && typingIds.includes(person.id)
               }
               isOnline={onlineIds.includes(person.id)}
+              typingMessage={typingMessages[person.id]}
               onSelect={setSelected}
             />
           ))}
@@ -906,6 +969,27 @@ function Voices() {
           START CHATTING <ArrowRight size={14} />
         </button>
       </div>
+      {joinToast && (
+        <div className="join-toast" key={joinToast.id} role="status" aria-live="polite">
+          <span className="join-toast-icon">
+            <i />
+          </span>
+          <span className="join-toast-copy">
+            <strong>{joinToast.person.name} just joined</strong>
+            <small>
+              {joinToast.person.flag} {joinToast.person.country} · ACTIVITY PREVIEW
+            </small>
+          </span>
+          <button
+            className="join-toast-dismiss"
+            type="button"
+            aria-label="Dismiss notification"
+            onClick={() => setJoinToast(null)}
+          >
+            <X size={15} />
+          </button>
+        </div>
+      )}
       {selected && (
         <ProfileModal person={selected} onClose={() => setSelected(null)} />
       )}
