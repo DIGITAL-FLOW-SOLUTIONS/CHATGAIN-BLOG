@@ -460,3 +460,30 @@ button, input { font: inherit; } button { cursor: pointer; } a { color: inherit;
   .join-toast-icon i { animation: none; }
   .profile-message-preview span { animation: none; }
 }
+
+/* Swap default and hover fills on the remaining colored action buttons. */
+.reference-button {
+  background: linear-gradient(135deg, var(--orange-dark), var(--pink));
+}
+.reference-button:hover {
+  background: linear-gradient(135deg, var(--orange), #9b5cff);
+}
+.feature-intro .reference-button {
+  background: linear-gradient(135deg, var(--orange-dark), var(--pink));
+  color: #fff;
+}
+.feature-intro .reference-button:hover {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: none;
+}
+.hotel-action { background: var(--orange-dark); }
+.hotel-action:hover { background: var(--orange); }
+.investment-action { background: #e83d88; }
+.investment-action:hover { background: var(--pink); }
+.button-green { background: #e83d88; }
+.button-green:hover { background: var(--pink); }
+.join-toast-dismiss {
+  background: color-mix(in srgb, var(--ink) 6%, var(--white));
+}
+.join-toast-dismiss:hover { background: transparent; }
