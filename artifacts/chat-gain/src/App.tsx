@@ -558,13 +558,9 @@ function RegisterButton({ className = "" }: { className?: string }) {
 function Header({
   dark,
   onTheme,
-  swahili,
-  onLanguage,
 }: {
   dark: boolean;
   onTheme: () => void;
-  swahili: boolean;
-  onLanguage: () => void;
 }) {
   return (
     <header>
@@ -585,14 +581,6 @@ function Header({
             <a href="#how-it-works">GUIDE</a>
           </div>
           <div className="reference-actions">
-            <button
-              className="language-button"
-              type="button"
-              onClick={onLanguage}
-              data-testid="button-language"
-            >
-              {swahili ? "EN" : "SW"}
-            </button>
             <button
               className="round-button"
               type="button"
@@ -1462,7 +1450,6 @@ function Footer() {
 
 function App() {
   const [dark, setDark] = useState(false);
-  const [swahili, setSwahili] = useState(false);
   useReveal();
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
@@ -1472,8 +1459,6 @@ function App() {
       <Header
         dark={dark}
         onTheme={() => setDark((value) => !value)}
-        swahili={swahili}
-        onLanguage={() => setSwahili((value) => !value)}
       />
       <main>
         <Hero />
