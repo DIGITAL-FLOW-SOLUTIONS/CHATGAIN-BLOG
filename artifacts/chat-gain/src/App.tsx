@@ -334,6 +334,8 @@ const payouts = [
   "SARAH M. KES 110,000 (just now)",
 ];
 
+const onlineCountChanges = [2, 12, 2, 7, -3, 9, -2, 6];
+
 const investmentPlans: InvestmentPlan[] = [
   {
     id: 1,
@@ -803,6 +805,7 @@ function PersonCard({
 
 function Voices() {
   const [selected, setSelected] = useState<Person | null>(null);
+  const [communityOnlineCount, setCommunityOnlineCount] = useState(1459);
   const [onlineIds, setOnlineIds] = useState<number[]>(() =>
     people.slice(0, 26).map((person) => person.id),
   );
@@ -841,6 +844,8 @@ function Voices() {
     let joinTimer = 0;
     let dismissToastTimer = 0;
     let toastSequence = 0;
+    let onlineCountStep = 0;
+    let onlineCountTimer = 0;
 
     const updateTypingActivity = () => {
       const available = people.filter((person) =>
@@ -890,6 +895,18 @@ function Voices() {
     updateTypingActivity();
     typingTimer = window.setInterval(updateTypingActivity, 1250);
 
+    onlineCountTimer = window.setInterval(() => {
+      const change =
+        onlineCountChanges[onlineCountStep % onlineCountChanges.length];
+      onlineCountStep += 1;
+      setCommunityOnlineCount((current) => {
+        const next = current + change;
+        if (next > 1499) return 1499 - (next - 1499);
+        if (next < 1450) return 1450 + (1450 - next);
+        return next;
+      });
+    }, 3200);
+
     activityTimer = window.setInterval(() => {
       const currentlyOnline = onlineIdsRef.current;
       const canGoAway = currentlyOnline.length > 22;
@@ -914,6 +931,7 @@ function Voices() {
 
     return () => {
       window.clearInterval(typingTimer);
+      window.clearInterval(onlineCountTimer);
       window.clearInterval(activityTimer);
       window.clearTimeout(joinTimer);
       window.clearTimeout(dismissToastTimer);
@@ -930,15 +948,15 @@ function Voices() {
             </h2>
             <p>Choose a profile and start a conversation</p>
             <span className="activity-preview-note">
-              30 sample profiles · activity shown is a visual preview
+              30 sample profiles · online count and activity are a visual preview
             </span>
           </div>
-          <div className="live-activity-panel" aria-live="polite">
+          <div className="live-activity-panel">
             <span className="live-count">
               <i />
-              <strong>{onlineIds.length}</strong> ONLINE
+              <strong>{communityOnlineCount}</strong> ONLINE
             </span>
-            <span className="recent-activity">
+            <span className="recent-activity" aria-live="polite">
               <MessageSquare size={13} />
               {recentActivity}
             </span>
