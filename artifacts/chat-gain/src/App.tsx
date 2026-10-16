@@ -879,11 +879,11 @@ function Voices() {
       setRecentActivity(`${person.name} from ${person.country} just joined`);
       setJoinToast({ id: ++toastSequence, person });
       window.clearTimeout(dismissToastTimer);
-      dismissToastTimer = window.setTimeout(() => setJoinToast(null), 4800);
+      dismissToastTimer = window.setTimeout(() => setJoinToast(null), 4200);
 
       joinTimer = window.setTimeout(
         showJoinToast,
-        10500 + Math.random() * 6500,
+        5600 + Math.random() * 2600,
       );
     };
 
@@ -910,7 +910,7 @@ function Voices() {
       );
     }, 7600);
 
-    joinTimer = window.setTimeout(showJoinToast, 3300);
+    joinTimer = window.setTimeout(showJoinToast, 1700);
 
     return () => {
       window.clearInterval(typingTimer);
