@@ -574,7 +574,6 @@ function Header({
             onClick={() => scrollToId("top")}
             data-testid="button-brand"
           >
-            <span className="reference-mark">c</span>
             <strong>CHAT GAIN</strong>
           </button>
           <div className="reference-links">
