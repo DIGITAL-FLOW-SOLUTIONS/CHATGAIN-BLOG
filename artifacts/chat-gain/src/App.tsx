@@ -1,8 +1,9 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   ArrowRight,
   Check,
   ChevronDown,
+  Eye,
   MessageSquare,
   Moon,
   Sun,
@@ -20,6 +21,7 @@ type Person = {
   country: string;
   flag: string;
   photo: string;
+  interest: string;
 };
 
 type InvestmentPlan = {
@@ -48,6 +50,7 @@ const people: Person[] = [
     flag: "🇺🇸",
     photo:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=180&q=85",
+    interest: "Travel stories",
   },
   {
     id: 2,
@@ -57,6 +60,7 @@ const people: Person[] = [
     flag: "🇬🇧",
     photo:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=180&q=85",
+    interest: "Music & culture",
   },
   {
     id: 3,
@@ -66,6 +70,7 @@ const people: Person[] = [
     flag: "🇩🇪",
     photo:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=180&q=85",
+    interest: "Learning languages",
   },
   {
     id: 4,
@@ -75,6 +80,7 @@ const people: Person[] = [
     flag: "🇨🇦",
     photo:
       "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=180&q=85",
+    interest: "Food & cooking",
   },
   {
     id: 5,
@@ -84,6 +90,7 @@ const people: Person[] = [
     flag: "🇦🇺",
     photo:
       "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=180&q=85",
+    interest: "Movies & travel",
   },
   {
     id: 6,
@@ -93,6 +100,7 @@ const people: Person[] = [
     flag: "🇸🇪",
     photo:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=180&q=85",
+    interest: "Sports & outdoors",
   },
   {
     id: 7,
@@ -102,6 +110,7 @@ const people: Person[] = [
     flag: "🇫🇷",
     photo:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=180&q=85",
+    interest: "Art & design",
   },
   {
     id: 8,
@@ -111,6 +120,7 @@ const people: Person[] = [
     flag: "🇳🇴",
     photo:
       "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=180&q=85",
+    interest: "Nature & hiking",
   },
   {
     id: 9,
@@ -120,6 +130,7 @@ const people: Person[] = [
     flag: "🇮🇹",
     photo:
       "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=180&q=85",
+    interest: "Books & coffee",
   },
   {
     id: 10,
@@ -129,6 +140,187 @@ const people: Person[] = [
     flag: "🇮🇪",
     photo:
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=180&q=85",
+    interest: "History & travel",
+  },
+  {
+    id: 11,
+    name: "Emilia L.",
+    age: 53,
+    country: "NETHERLANDS",
+    flag: "🇳🇱",
+    photo: "https://randomuser.me/api/portraits/women/11.jpg",
+    interest: "Art & weekend trips",
+  },
+  {
+    id: 12,
+    name: "Patrick M.",
+    age: 61,
+    country: "IRELAND",
+    flag: "🇮🇪",
+    photo: "https://randomuser.me/api/portraits/men/11.jpg",
+    interest: "Football & music",
+  },
+  {
+    id: 13,
+    name: "Aisha R.",
+    age: 49,
+    country: "MOROCCO",
+    flag: "🇲🇦",
+    photo: "https://randomuser.me/api/portraits/women/12.jpg",
+    interest: "Food & languages",
+  },
+  {
+    id: 14,
+    name: "Daniel B.",
+    age: 57,
+    country: "SPAIN",
+    flag: "🇪🇸",
+    photo: "https://randomuser.me/api/portraits/men/12.jpg",
+    interest: "Travel & photography",
+  },
+  {
+    id: 15,
+    name: "Claire D.",
+    age: 56,
+    country: "FRANCE",
+    flag: "🇫🇷",
+    photo: "https://randomuser.me/api/portraits/women/13.jpg",
+    interest: "Books & cooking",
+  },
+  {
+    id: 16,
+    name: "Michael S.",
+    age: 64,
+    country: "GERMANY",
+    flag: "🇩🇪",
+    photo: "https://randomuser.me/api/portraits/men/13.jpg",
+    interest: "History & cycling",
+  },
+  {
+    id: 17,
+    name: "Anna F.",
+    age: 52,
+    country: "SWEDEN",
+    flag: "🇸🇪",
+    photo: "https://randomuser.me/api/portraits/women/14.jpg",
+    interest: "Nature & wellness",
+  },
+  {
+    id: 18,
+    name: "Oliver T.",
+    age: 59,
+    country: "NEW ZEALAND",
+    flag: "🇳🇿",
+    photo: "https://randomuser.me/api/portraits/men/14.jpg",
+    interest: "Outdoors & films",
+  },
+  {
+    id: 19,
+    name: "Grace K.",
+    age: 55,
+    country: "JAPAN",
+    flag: "🇯🇵",
+    photo: "https://randomuser.me/api/portraits/women/15.jpg",
+    interest: "Gardening & tea",
+  },
+  {
+    id: 20,
+    name: "Lucas V.",
+    age: 62,
+    country: "BRAZIL",
+    flag: "🇧🇷",
+    photo: "https://randomuser.me/api/portraits/men/15.jpg",
+    interest: "Music & football",
+  },
+  {
+    id: 21,
+    name: "Nora E.",
+    age: 58,
+    country: "NORWAY",
+    flag: "🇳🇴",
+    photo: "https://randomuser.me/api/portraits/women/16.jpg",
+    interest: "Travel & nature",
+  },
+  {
+    id: 22,
+    name: "Mateo G.",
+    age: 51,
+    country: "MEXICO",
+    flag: "🇲🇽",
+    photo: "https://randomuser.me/api/portraits/men/16.jpg",
+    interest: "Cooking & movies",
+  },
+  {
+    id: 23,
+    name: "Amara J.",
+    age: 47,
+    country: "SOUTH AFRICA",
+    flag: "🇿🇦",
+    photo: "https://randomuser.me/api/portraits/women/17.jpg",
+    interest: "Dance & culture",
+  },
+  {
+    id: 24,
+    name: "Ethan C.",
+    age: 65,
+    country: "USA",
+    flag: "🇺🇸",
+    photo: "https://randomuser.me/api/portraits/men/17.jpg",
+    interest: "Jazz & history",
+  },
+  {
+    id: 25,
+    name: "Lina P.",
+    age: 54,
+    country: "PORTUGAL",
+    flag: "🇵🇹",
+    photo: "https://randomuser.me/api/portraits/women/18.jpg",
+    interest: "Ocean & travel",
+  },
+  {
+    id: 26,
+    name: "Samuel N.",
+    age: 60,
+    country: "GHANA",
+    flag: "🇬🇭",
+    photo: "https://randomuser.me/api/portraits/men/18.jpg",
+    interest: "Books & conversation",
+  },
+  {
+    id: 27,
+    name: "Yuki H.",
+    age: 50,
+    country: "JAPAN",
+    flag: "🇯🇵",
+    photo: "https://randomuser.me/api/portraits/women/19.jpg",
+    interest: "Food & photography",
+  },
+  {
+    id: 28,
+    name: "Adam P.",
+    age: 63,
+    country: "POLAND",
+    flag: "🇵🇱",
+    photo: "https://randomuser.me/api/portraits/men/19.jpg",
+    interest: "Travel & technology",
+  },
+  {
+    id: 29,
+    name: "Sara M.",
+    age: 56,
+    country: "UNITED ARAB EMIRATES",
+    flag: "🇦🇪",
+    photo: "https://randomuser.me/api/portraits/women/20.jpg",
+    interest: "Design & food",
+  },
+  {
+    id: 30,
+    name: "Theo R.",
+    age: 58,
+    country: "DENMARK",
+    flag: "🇩🇰",
+    photo: "https://randomuser.me/api/portraits/men/20.jpg",
+    interest: "Cycling & travel",
   },
 ];
 
@@ -506,17 +698,25 @@ function PersonCard({
   person,
   onSelect,
   isTyping,
+  isOnline,
 }: {
   person: Person;
   onSelect: (person: Person) => void;
   isTyping: boolean;
+  isOnline: boolean;
 }) {
   return (
     <article className="reference-person-card reveal">
       <div className="profile-head">
         <div className="profile-image-wrap">
-          <img src={person.photo} alt="" />
-          <i />
+          <img
+            src={person.photo}
+            alt={`${person.name} profile`}
+            loading="lazy"
+            width="64"
+            height="64"
+          />
+          <i className={isOnline ? "is-online" : "is-away"} />
         </div>
         <div className="profile-name">
           <h3>
@@ -525,12 +725,25 @@ function PersonCard({
           <p>
             {person.flag} <span>{person.country}</span>
           </p>
+          <span className="profile-interest">{person.interest}</span>
         </div>
       </div>
       <div className="profile-meta">
         <span
-          className={isTyping ? "typing-status" : ""}
-          aria-label={isTyping ? "Typing" : "Looking to talk"}
+          className={
+            isTyping
+              ? "typing-status"
+              : isOnline
+                ? "presence-online"
+                : "presence-away"
+          }
+          aria-label={
+            isTyping
+              ? "Typing in activity preview"
+              : isOnline
+                ? "Online in activity preview"
+                : "Away in activity preview"
+          }
         >
           {isTyping ? (
             <>
@@ -538,30 +751,37 @@ function PersonCard({
               <i />
               <i /> TYPING...
             </>
-          ) : (
+          ) : isOnline ? (
             <>
               <i /> LOOKING TO TALK
             </>
+          ) : (
+            <>
+              <i /> AWAY
+            </>
           )}
         </span>
-        <b>ACTIVE NOW</b>
+        <b className={isOnline ? "is-online" : "is-away"}>
+          {isOnline ? "ONLINE" : "AWAY"}
+        </b>
       </div>
       <div className="profile-actions">
         <button
           className="card-chat"
           type="button"
           onClick={redirectToRegistration}
-          data-testid={`button-chat-${person.id}`}
+          data-testid={`button-start-chat-${person.id}`}
         >
-          CHAT NOW
+          START <ArrowRight size={13} />
         </button>
         <button
           className="icon-chat"
           type="button"
-          aria-label={`Message ${person.name}`}
+          aria-label={`Watch ${person.name}'s profile`}
           onClick={() => onSelect(person)}
         >
-          <MessageSquare size={16} />
+          <Eye size={14} />
+          <span>WATCH</span>
         </button>
       </div>
     </article>
@@ -570,75 +790,120 @@ function PersonCard({
 
 function Voices() {
   const [selected, setSelected] = useState<Person | null>(null);
-  const [typingIds, setTypingIds] = useState<number[]>([]);
+  const [onlineIds, setOnlineIds] = useState<number[]>(() =>
+    people.slice(0, 26).map((person) => person.id),
+  );
+  const [typingIds, setTypingIds] = useState<number[]>(() =>
+    people.slice(0, 3).map((person) => person.id),
+  );
+  const [recentActivity, setRecentActivity] = useState(
+    "A few profiles are starting conversations",
+  );
+  const onlineIdsRef = useRef(onlineIds);
+
   useEffect(() => {
-    let typingTimer: number;
+    onlineIdsRef.current = onlineIds;
+  }, [onlineIds]);
+
+  useEffect(() => {
+    let typingTimer = 0;
+    let nextTypingTimer = 0;
     const showNextTyping = () => {
-      typingTimer = window.setTimeout(
-        () => {
-          const typingCount = 4 + Math.floor(Math.random() * 2);
-          const nextTypingIds = [...people]
-            .sort(() => Math.random() - 0.5)
-            .slice(0, typingCount)
-            .map((person) => person.id);
-          setTypingIds(nextTypingIds);
-          typingTimer = window.setTimeout(
-            () => {
-              setTypingIds([]);
-              showNextTyping();
-            },
-            1800 + Math.random() * 2200,
-          );
-        },
-        3200 + Math.random() * 4800,
+      const available = people.filter((person) =>
+        onlineIdsRef.current.includes(person.id),
       );
+      const typingCount = Math.min(
+        available.length,
+        3 + Math.floor(Math.random() * 4),
+      );
+      setTypingIds(
+        [...available]
+          .sort(() => Math.random() - 0.5)
+          .slice(0, typingCount)
+          .map((person) => person.id),
+      );
+      typingTimer = window.setTimeout(() => {
+        setTypingIds([]);
+        nextTypingTimer = window.setTimeout(
+          showNextTyping,
+          1800 + Math.random() * 2200,
+        );
+      }, 1800 + Math.random() * 1500);
     };
-    showNextTyping();
-    return () => window.clearTimeout(typingTimer);
+    const firstTypingTimer = window.setTimeout(showNextTyping, 1200);
+    const activityTimer = window.setInterval(() => {
+      const currentlyOnline = onlineIdsRef.current;
+      const canGoAway = currentlyOnline.length > 22;
+      const candidates = canGoAway
+        ? people
+        : people.filter((person) => !currentlyOnline.includes(person.id));
+      const person = candidates[Math.floor(Math.random() * candidates.length)];
+      if (!person) return;
+
+      const isComingOnline = !currentlyOnline.includes(person.id);
+      setOnlineIds((current) =>
+        isComingOnline
+          ? [...new Set([...current, person.id])]
+          : current.filter((id) => id !== person.id),
+      );
+      setRecentActivity(
+        `${person.name} ${isComingOnline ? "just came online" : "is away for now"}`,
+      );
+    }, 7600);
+
+    return () => {
+      window.clearTimeout(firstTypingTimer);
+      window.clearTimeout(typingTimer);
+      window.clearTimeout(nextTypingTimer);
+      window.clearInterval(activityTimer);
+    };
   }, []);
+
   return (
     <section className="voices-reference" id="voices">
       <div className="reference-container">
         <div className="live-heading reveal">
-          <div>
+          <div className="live-heading-copy">
             <h2>
               <i /> LIVE FOREIGNERS ONLINE
             </h2>
-            <p>TAP ANY PROFILE TO START A PAID CHAT NOW</p>
+            <p>Choose a profile and start a conversation</p>
+            <span className="activity-preview-note">
+              30 sample profiles · activity shown is a visual preview
+            </span>
+          </div>
+          <div className="live-activity-panel" aria-live="polite">
+            <span className="live-count">
+              <i />
+              <strong>{onlineIds.length}</strong> ONLINE
+            </span>
+            <span className="recent-activity">
+              <MessageSquare size={13} />
+              {recentActivity}
+            </span>
           </div>
         </div>
         <div className="reference-grid">
-          {people
-            .slice(0, 6)
-            .map((person, index) =>
-              index === 6 ? null : (
-                <PersonCard
-                  key={person.id}
-                  person={person}
-                  isTyping={typingIds.includes(person.id)}
-                  onSelect={setSelected}
-                />
-              ),
-            )}
-          <SupportCard />
-        </div>
-        <div className="reference-grid reference-grid-lower">
-          {people.slice(6).map((person) => (
+          {people.map((person) => (
             <PersonCard
               key={person.id}
               person={person}
-              isTyping={typingIds.includes(person.id)}
+              isTyping={
+                onlineIds.includes(person.id) && typingIds.includes(person.id)
+              }
+              isOnline={onlineIds.includes(person.id)}
               onSelect={setSelected}
             />
           ))}
+          <SupportCard />
         </div>
         <button
           className="more-button reveal"
           type="button"
-          onClick={() => scrollToId("join")}
+          onClick={redirectToRegistration}
           data-testid="button-more-chats"
         >
-          SHOW MORE <ArrowRight size={14} />
+          START CHATTING <ArrowRight size={14} />
         </button>
       </div>
       {selected && (
