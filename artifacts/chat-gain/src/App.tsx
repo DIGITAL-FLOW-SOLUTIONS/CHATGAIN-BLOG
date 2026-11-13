@@ -322,186 +322,6 @@ const people: Person[] = [
     photo: "https://randomuser.me/api/portraits/men/20.jpg",
     interest: "Cycling & travel",
   },
-  {
-    id: 31,
-    name: "Elena V.",
-    age: 53,
-    country: "PORTUGAL",
-    flag: "🇵🇹",
-    photo: "https://randomuser.me/api/portraits/women/21.jpg",
-    interest: "Cooking & coastal walks",
-  },
-  {
-    id: 32,
-    name: "Gabriel C.",
-    age: 60,
-    country: "ARGENTINA",
-    flag: "🇦🇷",
-    photo: "https://randomuser.me/api/portraits/men/21.jpg",
-    interest: "Football & coffee",
-  },
-  {
-    id: 33,
-    name: "Amelie T.",
-    age: 49,
-    country: "BELGIUM",
-    flag: "🇧🇪",
-    photo: "https://randomuser.me/api/portraits/women/22.jpg",
-    interest: "Art galleries & books",
-  },
-  {
-    id: 34,
-    name: "Jonas L.",
-    age: 62,
-    country: "AUSTRIA",
-    flag: "🇦🇹",
-    photo: "https://randomuser.me/api/portraits/men/22.jpg",
-    interest: "Hiking & jazz",
-  },
-  {
-    id: 35,
-    name: "Priya S.",
-    age: 48,
-    country: "INDIA",
-    flag: "🇮🇳",
-    photo: "https://randomuser.me/api/portraits/women/23.jpg",
-    interest: "Languages & festivals",
-  },
-  {
-    id: 36,
-    name: "Diego M.",
-    age: 56,
-    country: "COLOMBIA",
-    flag: "🇨🇴",
-    photo: "https://randomuser.me/api/portraits/men/23.jpg",
-    interest: "Photography & food",
-  },
-  {
-    id: 37,
-    name: "Isabel R.",
-    age: 52,
-    country: "MEXICO",
-    flag: "🇲🇽",
-    photo: "https://randomuser.me/api/portraits/women/24.jpg",
-    interest: "Travel & cinema",
-  },
-  {
-    id: 38,
-    name: "Noah K.",
-    age: 64,
-    country: "SWITZERLAND",
-    flag: "🇨🇭",
-    photo: "https://randomuser.me/api/portraits/men/24.jpg",
-    interest: "Reading & mountain trips",
-  },
-  {
-    id: 39,
-    name: "Mei L.",
-    age: 50,
-    country: "TAIWAN",
-    flag: "🇹🇼",
-    photo: "https://randomuser.me/api/portraits/women/25.jpg",
-    interest: "Tea & design",
-  },
-  {
-    id: 40,
-    name: "Alex D.",
-    age: 59,
-    country: "SCOTLAND",
-    flag: "🇬🇧",
-    photo: "https://randomuser.me/api/portraits/men/25.jpg",
-    interest: "Music & history",
-  },
-  {
-    id: 41,
-    name: "Fatima A.",
-    age: 47,
-    country: "EGYPT",
-    flag: "🇪🇬",
-    photo: "https://randomuser.me/api/portraits/women/26.jpg",
-    interest: "Food & family stories",
-  },
-  {
-    id: 42,
-    name: "Luca B.",
-    age: 61,
-    country: "ITALY",
-    flag: "🇮🇹",
-    photo: "https://randomuser.me/api/portraits/men/26.jpg",
-    interest: "Travel & football",
-  },
-  {
-    id: 43,
-    name: "Zoe C.",
-    age: 54,
-    country: "GREECE",
-    flag: "🇬🇷",
-    photo: "https://randomuser.me/api/portraits/women/27.jpg",
-    interest: "Island escapes & cooking",
-  },
-  {
-    id: 44,
-    name: "Erik N.",
-    age: 63,
-    country: "FINLAND",
-    flag: "🇫🇮",
-    photo: "https://randomuser.me/api/portraits/men/27.jpg",
-    interest: "Nature & winter walks",
-  },
-  {
-    id: 45,
-    name: "Lucia F.",
-    age: 51,
-    country: "CHILE",
-    flag: "🇨🇱",
-    photo: "https://randomuser.me/api/portraits/women/28.jpg",
-    interest: "Art & Latin music",
-  },
-  {
-    id: 46,
-    name: "Tomasz W.",
-    age: 65,
-    country: "CZECHIA",
-    flag: "🇨🇿",
-    photo: "https://randomuser.me/api/portraits/men/28.jpg",
-    interest: "Cycling & museums",
-  },
-  {
-    id: 47,
-    name: "Sofia M.",
-    age: 55,
-    country: "TURKEY",
-    flag: "🇹🇷",
-    photo: "https://randomuser.me/api/portraits/women/29.jpg",
-    interest: "Books & travel",
-  },
-  {
-    id: 48,
-    name: "Hugo P.",
-    age: 58,
-    country: "ICELAND",
-    flag: "🇮🇸",
-    photo: "https://randomuser.me/api/portraits/men/29.jpg",
-    interest: "Cinema & outdoor life",
-  },
-  {
-    id: 49,
-    name: "Amina J.",
-    age: 50,
-    country: "NIGERIA",
-    flag: "🇳🇬",
-    photo: "https://randomuser.me/api/portraits/women/30.jpg",
-    interest: "Food & new cultures",
-  },
-  {
-    id: 50,
-    name: "Emil R.",
-    age: 62,
-    country: "HUNGARY",
-    flag: "🇭🇺",
-    photo: "https://randomuser.me/api/portraits/men/30.jpg",
-    interest: "Technology & live music",
-  },
 ];
 
 const payouts = [
@@ -513,8 +333,6 @@ const payouts = [
   "LINDA W. KES 210,000 (5m ago)",
   "SARAH M. KES 110,000 (just now)",
 ];
-
-const onlineCountChanges = [2, 12, 2, 7, -3, 9, -2, 6];
 
 const investmentPlans: InvestmentPlan[] = [
   {
@@ -738,9 +556,13 @@ function RegisterButton({ className = "" }: { className?: string }) {
 function Header({
   dark,
   onTheme,
+  swahili,
+  onLanguage,
 }: {
   dark: boolean;
   onTheme: () => void;
+  swahili: boolean;
+  onLanguage: () => void;
 }) {
   return (
     <header>
@@ -752,6 +574,7 @@ function Header({
             onClick={() => scrollToId("top")}
             data-testid="button-brand"
           >
+            <span className="reference-mark">c</span>
             <strong>CHAT GAIN</strong>
           </button>
           <div className="reference-links">
@@ -761,6 +584,14 @@ function Header({
             <a href="#how-it-works">GUIDE</a>
           </div>
           <div className="reference-actions">
+            <button
+              className="language-button"
+              type="button"
+              onClick={onLanguage}
+              data-testid="button-language"
+            >
+              {swahili ? "EN" : "SW"}
+            </button>
             <button
               className="round-button"
               type="button"
@@ -867,27 +698,17 @@ function PersonCard({
   person,
   onSelect,
   isTyping,
-  isOnline,
-  typingMessage,
 }: {
   person: Person;
   onSelect: (person: Person) => void;
   isTyping: boolean;
-  isOnline: boolean;
-  typingMessage?: string;
 }) {
   return (
     <article className="reference-person-card reveal">
       <div className="profile-head">
         <div className="profile-image-wrap">
-          <img
-            src={person.photo}
-            alt={`${person.name} profile`}
-            loading="lazy"
-            width="64"
-            height="64"
-          />
-          <i className={isOnline ? "is-online" : "is-away"} />
+          <img src={person.photo} alt="" />
+          <i />
         </div>
         <div className="profile-name">
           <h3>
@@ -896,25 +717,12 @@ function PersonCard({
           <p>
             {person.flag} <span>{person.country}</span>
           </p>
-          <span className="profile-interest">{person.interest}</span>
         </div>
       </div>
       <div className="profile-meta">
         <span
-          className={
-            isTyping
-              ? "typing-status"
-              : isOnline
-                ? "presence-online"
-                : "presence-away"
-          }
-          aria-label={
-            isTyping
-              ? "Typing in activity preview"
-              : isOnline
-                ? "Online in activity preview"
-                : "Away in activity preview"
-          }
+          className={isTyping ? "typing-status" : ""}
+          aria-label={isTyping ? "Typing" : "Looking to talk"}
         >
           {isTyping ? (
             <>
@@ -922,49 +730,30 @@ function PersonCard({
               <i />
               <i /> TYPING...
             </>
-          ) : isOnline ? (
+          ) : (
             <>
               <i /> LOOKING TO TALK
             </>
-          ) : (
-            <>
-              <i /> AWAY
-            </>
           )}
         </span>
-        <b className={isOnline ? "is-online" : "is-away"}>
-          {isOnline ? "ONLINE" : "AWAY"}
-        </b>
-      </div>
-      <div
-        className={`profile-message-preview${typingMessage ? " has-message" : " is-idle"}`}
-        aria-label={typingMessage ? `${person.name} typed: ${typingMessage}` : undefined}
-        aria-hidden={typingMessage ? undefined : true}
-      >
-        {typingMessage && (
-          <>
-            <i />
-            <span>{typingMessage}</span>
-          </>
-        )}
+        <b>ACTIVE NOW</b>
       </div>
       <div className="profile-actions">
         <button
           className="card-chat"
           type="button"
           onClick={redirectToRegistration}
-          data-testid={`button-start-chat-${person.id}`}
+          data-testid={`button-chat-${person.id}`}
         >
-          START <ArrowRight size={13} />
+          CHAT NOW
         </button>
         <button
           className="icon-chat"
           type="button"
-          aria-label={`Watch ${person.name}'s profile`}
+          aria-label={`Message ${person.name}`}
           onClick={() => onSelect(person)}
         >
-          <Eye size={14} />
-          <span>WATCH</span>
+          <MessageSquare size={16} />
         </button>
       </div>
     </article>
@@ -973,208 +762,77 @@ function PersonCard({
 
 function Voices() {
   const [selected, setSelected] = useState<Person | null>(null);
-  const [communityOnlineCount, setCommunityOnlineCount] = useState(1459);
-  const [onlineIds, setOnlineIds] = useState<number[]>(() =>
-    people.slice(0, 44).map((person) => person.id),
-  );
-  const [typingIds, setTypingIds] = useState<number[]>(() =>
-    people.slice(0, 8).map((person) => person.id),
-  );
-  const [typingMessages, setTypingMessages] = useState<Record<number, string>>({});
-  const [recentActivity, setRecentActivity] = useState(
-    "A few profiles are starting conversations",
-  );
-  const [joinToast, setJoinToast] = useState<{ id: number; person: Person } | null>(
-    null,
-  );
-  const onlineIdsRef = useRef(onlineIds);
-
-  const messageSnippets = [
-    "Hey!",
-    "Hola!",
-    "Ola!",
-    "How are you?",
-    "Hello there!",
-    "Nice to meet you",
-    "What's up?",
-    "Good morning!",
-    "Where are you from?",
-    "😊",
-  ];
-
+  const [typingIds, setTypingIds] = useState<number[]>([]);
   useEffect(() => {
-    onlineIdsRef.current = onlineIds;
-  }, [onlineIds]);
-
-  useEffect(() => {
-    let typingTimer = 0;
-    let activityTimer = 0;
-    let joinTimer = 0;
-    let dismissToastTimer = 0;
-    let toastSequence = 0;
-    let onlineCountStep = 0;
-    let onlineCountTimer = 0;
-
-    const updateTypingActivity = () => {
-      const available = people.filter((person) =>
-        onlineIdsRef.current.includes(person.id),
-      );
-      const shuffled = [...available].sort(() => Math.random() - 0.5);
-      const typingCount = Math.min(
-        available.length,
-        6 + Math.floor(Math.random() * 6),
-      );
-      const nextTypingIds = shuffled
-        .slice(0, typingCount)
-        .map((person) => person.id);
-      const messageCount = Math.min(
-        nextTypingIds.length,
-        3 + Math.floor(Math.random() * 4),
-      );
-      const nextMessages: Record<number, string> = {};
-
-      nextTypingIds.slice(0, messageCount).forEach((personId) => {
-        nextMessages[personId] =
-          messageSnippets[Math.floor(Math.random() * messageSnippets.length)];
-      });
-
-      setTypingIds(nextTypingIds);
-      setTypingMessages(nextMessages);
-    };
-
-    const showJoinToast = () => {
-      const person = people[Math.floor(Math.random() * people.length)];
-      if (!person) return;
-
-      setOnlineIds((current) =>
-        current.includes(person.id) ? current : [...current, person.id],
-      );
-      setRecentActivity(`${person.name} from ${person.country} just joined`);
-      setJoinToast({ id: ++toastSequence, person });
-      window.clearTimeout(dismissToastTimer);
-      dismissToastTimer = window.setTimeout(() => setJoinToast(null), 4200);
-
-      joinTimer = window.setTimeout(
-        showJoinToast,
-        5600 + Math.random() * 2600,
+    let typingTimer: number;
+    const showNextTyping = () => {
+      typingTimer = window.setTimeout(
+        () => {
+          const typingCount = 4 + Math.floor(Math.random() * 2);
+          const nextTypingIds = [...people]
+            .sort(() => Math.random() - 0.5)
+            .slice(0, typingCount)
+            .map((person) => person.id);
+          setTypingIds(nextTypingIds);
+          typingTimer = window.setTimeout(
+            () => {
+              setTypingIds([]);
+              showNextTyping();
+            },
+            1800 + Math.random() * 2200,
+          );
+        },
+        3200 + Math.random() * 4800,
       );
     };
-
-    updateTypingActivity();
-    typingTimer = window.setInterval(updateTypingActivity, 1250);
-
-    onlineCountTimer = window.setInterval(() => {
-      const change =
-        onlineCountChanges[onlineCountStep % onlineCountChanges.length];
-      onlineCountStep += 1;
-      setCommunityOnlineCount((current) => {
-        const next = current + change;
-        if (next > 1499) return 1499 - (next - 1499);
-        if (next < 1450) return 1450 + (1450 - next);
-        return next;
-      });
-    }, 3200);
-
-    activityTimer = window.setInterval(() => {
-      const currentlyOnline = onlineIdsRef.current;
-      const canGoAway = currentlyOnline.length > 44;
-      const candidates = canGoAway
-        ? people
-        : people.filter((person) => !currentlyOnline.includes(person.id));
-      const person = candidates[Math.floor(Math.random() * candidates.length)];
-      if (!person) return;
-
-      const isComingOnline = !currentlyOnline.includes(person.id);
-      setOnlineIds((current) =>
-        isComingOnline
-          ? [...new Set([...current, person.id])]
-          : current.filter((id) => id !== person.id),
-      );
-      setRecentActivity(
-        `${person.name} ${isComingOnline ? "just came online" : "is away for now"}`,
-      );
-    }, 7600);
-
-    joinTimer = window.setTimeout(showJoinToast, 1700);
-
-    return () => {
-      window.clearInterval(typingTimer);
-      window.clearInterval(onlineCountTimer);
-      window.clearInterval(activityTimer);
-      window.clearTimeout(joinTimer);
-      window.clearTimeout(dismissToastTimer);
-    };
+    showNextTyping();
+    return () => window.clearTimeout(typingTimer);
   }, []);
-
   return (
     <section className="voices-reference" id="voices">
       <div className="reference-container">
         <div className="live-heading reveal">
-          <div className="live-heading-copy">
+          <div>
             <h2>
               <i /> LIVE FOREIGNERS ONLINE
             </h2>
-            <p>Choose a profile and start a conversation</p>
-            <span className="activity-preview-note">
-              50 sample profiles · online count and activity are a visual preview
-            </span>
-          </div>
-          <div className="live-activity-panel">
-            <span className="live-count">
-              <i />
-              <strong>{communityOnlineCount}</strong> ONLINE
-            </span>
-            <span className="recent-activity" aria-live="polite">
-              <MessageSquare size={13} />
-              {recentActivity}
-            </span>
+            <p>TAP ANY PROFILE TO START A PAID CHAT NOW</p>
           </div>
         </div>
         <div className="reference-grid">
-          {people.map((person) => (
+          {people
+            .slice(0, 6)
+            .map((person, index) =>
+              index === 6 ? null : (
+                <PersonCard
+                  key={person.id}
+                  person={person}
+                  isTyping={typingIds.includes(person.id)}
+                  onSelect={setSelected}
+                />
+              ),
+            )}
+          <SupportCard />
+        </div>
+        <div className="reference-grid reference-grid-lower">
+          {people.slice(6).map((person) => (
             <PersonCard
               key={person.id}
               person={person}
-              isTyping={
-                onlineIds.includes(person.id) && typingIds.includes(person.id)
-              }
-              isOnline={onlineIds.includes(person.id)}
-              typingMessage={typingMessages[person.id]}
+              isTyping={typingIds.includes(person.id)}
               onSelect={setSelected}
             />
           ))}
-          <SupportCard />
         </div>
         <button
           className="more-button reveal"
           type="button"
-          onClick={redirectToRegistration}
+          onClick={() => scrollToId("join")}
           data-testid="button-more-chats"
         >
-          START CHATTING <ArrowRight size={14} />
+          SHOW MORE <ArrowRight size={14} />
         </button>
       </div>
-      {joinToast && (
-        <div className="join-toast" key={joinToast.id} role="status" aria-live="polite">
-          <span className="join-toast-icon">
-            <i />
-          </span>
-          <span className="join-toast-copy">
-            <strong>{joinToast.person.name} just joined</strong>
-            <small>
-              {joinToast.person.flag} {joinToast.person.country} · ACTIVITY PREVIEW
-            </small>
-          </span>
-          <button
-            className="join-toast-dismiss"
-            type="button"
-            aria-label="Dismiss notification"
-            onClick={() => setJoinToast(null)}
-          >
-            <X size={15} />
-          </button>
-        </div>
-      )}
       {selected && (
         <ProfileModal person={selected} onClose={() => setSelected(null)} />
       )}
@@ -1630,6 +1288,7 @@ function Footer() {
 
 function App() {
   const [dark, setDark] = useState(false);
+  const [swahili, setSwahili] = useState(false);
   useReveal();
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
@@ -1639,6 +1298,8 @@ function App() {
       <Header
         dark={dark}
         onTheme={() => setDark((value) => !value)}
+        swahili={swahili}
+        onLanguage={() => setSwahili((value) => !value)}
       />
       <main>
         <Hero />
